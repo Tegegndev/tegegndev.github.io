@@ -378,6 +378,116 @@ body {
   color: var(--secondary-color);
 }
 
+.cert-intro {
+  color: var(--text-body);
+  margin-bottom: 16px;
+}
+
+.cert-showcase {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.cert-feature {
+  background: linear-gradient(145deg, #fcf8f2, #f1e7da);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.cert-image {
+  display: block;
+  text-decoration: none;
+  border: 1px solid #cebcae;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(50, 34, 24, 0.08);
+}
+
+.cert-image img {
+  width: 100%;
+  display: block;
+}
+
+.cert-image.featured {
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.cert-copy h3,
+.cert-card h3 {
+  color: var(--text-dark);
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.cert-copy p,
+.cert-card p {
+  color: var(--text-body);
+  font-size: 14px;
+}
+
+.cert-label {
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cert-meta {
+  margin-top: 12px;
+}
+
+.cert-meta span {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-color);
+  color: #5a4334;
+  font-size: 13px;
+}
+
+.cert-meta i {
+  margin-right: 5px;
+  color: var(--primary-color);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cert-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-card:hover,
+.cert-feature:hover {
+  border-color: #b5c0ad;
+  box-shadow: 0 10px 22px rgba(62, 78, 56, 0.12);
+  transform: translateY(-2px);
+}
+
+.cert-card .cert-image {
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.skillshare-card {
+  background: linear-gradient(145deg, #fcf8f2, #eef4eb);
+}
+
 .contact-intro {
   margin-bottom: 12px;
   color: var(--text-body);
@@ -480,5 +590,9 @@ footer {
 
   .section h2 {
     font-size: 24px;
+  }
+
+  .cert-showcase {
+    grid-template-columns: 1fr;
   }
 }
