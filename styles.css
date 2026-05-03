@@ -25,6 +25,58 @@ body {
   line-height: 1.6;
 }
 
+body.is-loading {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--panel-bg);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-mark {
+  font-family: "Syne", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.preloader-mark .angle {
+  color: var(--text-body);
+}
+
+.preloader-mark .tw {
+  animation: twBlink 1s ease-in-out infinite;
+}
+
+.preloader-mark .comma {
+  color: var(--text-body);
+}
+
+@keyframes twBlink {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .navbar {
   background-color: var(--panel-bg);
   border-bottom: 1px solid var(--border-color);

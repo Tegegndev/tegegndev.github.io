@@ -9,7 +9,16 @@
   <link href="assets/fonts/google/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="is-loading">
+
+  <div class="preloader" id="preloader" aria-label="Loading page">
+    <div class="preloader-mark" aria-hidden="true">
+      <span class="angle">&lt;</span>
+      <span class="tw">TW</span>
+      <span class="comma">/</span>
+      <span class="angle">&gt;</span>
+    </div>
+  </div>
 
   <nav class="navbar">
     <div class="nav-inner">
@@ -507,5 +516,18 @@
   </footer>
 
 
+  <script>
+    window.addEventListener("load", function () {
+      const preloader = document.getElementById("preloader");
+      setTimeout(function () {
+        document.body.classList.remove("is-loading");
+        if (!preloader) return;
+        preloader.classList.add("hide");
+        setTimeout(function () {
+          preloader.remove();
+        }, 650);
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
