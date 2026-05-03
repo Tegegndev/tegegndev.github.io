@@ -181,16 +181,64 @@
       border-radius: 8px;
       padding: 14px;
       background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-thumb {
+      min-height: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #eef2ff;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 160px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .project-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .project-card h3 {
-      margin-bottom: 8px;
       font-size: 18px;
     }
 
     .project-card p {
       color: #555;
       font-size: 14px;
+    }
+
+    .project-actions {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border: 1px solid #4f46e5;
+      color: #4f46e5;
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-weight: 700;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .project-actions a:hover {
+      background-color: #4f46e5;
+      color: #fff;
     }
 
     .contact-intro {
@@ -331,16 +379,72 @@
     <h2>Pro<span>jects</span></h2>
     <div class="projects-grid">
       <div class="project-card">
-        <h3>Voting Management System (C++)</h3>
-        <p>A simple voting management system built with C++ for Programming II in 1st semester. Manages voters and voting results with basic input and output.</p>
+        <div class="project-thumb">
+          <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80" alt="People voting during an election">
+        </div>
+        <div class="project-copy">
+          <h3>Voting Management System (C++)</h3>
+          <p>A simple voting management system built with C++ for Programming II in 1st semester. Manages voters and voting results with basic input and output.</p>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer">
+            <i class='bx bx-code-alt'></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
       </div>
       <div class="project-card">
-        <h3>Ethiopia Forex Currency Exchange Monitor</h3>
-        <p>A website showing real-time exchange rates from different banks in Ethiopia, making it easy to compare rates in one place.</p>
+        <div class="project-thumb">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80" alt="Financial chart on a trading screen">
+        </div>
+        <div class="project-copy">
+          <h3>Ethiopia Forex Currency Exchange Monitor</h3>
+          <p>A website showing real-time exchange rates from different banks in Ethiopia, making it easy to compare rates in one place.</p>
+        </div>
+        <div class="project-actions">
+          <a href="https://tegegn.codes" target="_blank" rel="noreferrer">
+            <i class='bx bx-link-external'></i>
+            <span>Live View</span>
+          </a>
+          <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer">
+            <i class='bx bx-code-alt'></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
       </div>
       <div class="project-card">
-        <h3>WSU Dining App (Android)</h3>
-        <p>An Android app that digitalizes the student meal dining system using QR technology for faster and more accurate meal tracking.</p>
+        <div class="project-thumb">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80" alt="Smartphone displaying a mobile app">
+        </div>
+        <div class="project-copy">
+          <h3>WSU Dining App (Android)</h3>
+          <p>An Android app that digitalizes the student meal dining system using QR technology for faster and more accurate meal tracking.</p>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer">
+            <i class='bx bx-code-alt'></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Young people creating short video content together">
+        </div>
+        <div class="project-copy">
+          <h3>Kokeba</h3>
+          <p>A TikTok-like web app for voice vocals and vent sharing, designed for short-form expression and social interaction.</p>
+        </div>
+        <div class="project-actions">
+          <a href="https://kokeba.vercel.app/" target="_blank" rel="noreferrer">
+            <i class='bx bx-link-external'></i>
+            <span>Live View</span>
+          </a>
+          <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer">
+            <i class='bx bx-code-alt'></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
