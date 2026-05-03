@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tegegn Wukianos</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #dddddd;
+      padding: 12px 16px;
+    }
+
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: #4f46e5;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .nav-links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover {
+      background-color: #e5e7eb;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 16px auto;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4f46e5;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      color: #4f46e5;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      color: #555;
+      margin-bottom: 8px;
+      max-width: 620px;
+    }
+
+    .location {
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      border: 1px solid #4f46e5;
+    }
+
+    .cta-buttons a:first-child {
+      background-color: #4f46e5;
+      color: #fff;
+    }
+
+    .cta-buttons a:last-child {
+      background-color: #fff;
+      color: #4f46e5;
+    }
+
+    .section {
+      max-width: 980px;
+      margin: 16px auto;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      padding: 22px;
+    }
+
+    .section h2 {
+      margin-bottom: 14px;
+      font-size: 28px;
+    }
+
+    .section h2 span {
+      color: #4f46e5;
+    }
+
+    .about p {
+      color: #444;
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid #d1d5db;
+      background-color: #f9fafb;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-weight: 600;
+    }
+
+    .edu-card {
+      border: 1px solid #d1d5db;
+      border-left: 4px solid #4f46e5;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .project-card {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .project-card h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .project-card p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .contact-intro {
+      margin-bottom: 12px;
+      color: #555;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .contact-card {
+      text-decoration: none;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      color: #222;
+      min-height: 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      padding: 10px;
+    }
+
+    .contact-card i {
+      font-size: 24px;
+      color: #4f46e5;
+    }
+
+    .contact-card span {
+      font-size: 12px;
+      color: #555;
+      font-weight: bold;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 16px auto 20px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo">T E G E G N &nbsp; W U K I A N O S</div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#languages">Languages</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certs</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero" id="home">
+    <img src="https://avatars.githubusercontent.com/u/186698304?v=4" alt="Tegegn Wukianos">
+    <div>
+      <h1>Tegegn Wukianos</h1>
+      <p class="role">Backend Software Developer</p>
+      <p class="bio">I build fast, scalable backend systems and APIs. Passionate about clean code, automation, and solving real-world problems with Python and modern web frameworks.</p>
+      <p class="location">📍 Wolaita Sodo, Ethiopia</p>
+      <div class="cta-buttons">
+        <a href="#projects">View Projects</a>
+        <a href="#contact">Contact Me</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section about" id="about">
+    <h2>About <span>Me</span></h2>
+    <p>I am a backend software developer and an IT student who enjoys building real projects. I like learning by doing and improving my skills step by step.</p>
+  </div>
+
+  <div class="section" id="languages">
+    <h2>Lang<span>uages</span></h2>
+    <ul class="card-list">
+      <li class="card">Amharic</li>
+      <li class="card">Afan Oromo</li>
+      <li class="card">English</li>
+    </ul>
+  </div>
+
+  <div class="section" id="skills">
+    <h2>Ski<span>lls</span></h2>
+    <ul class="card-list">
+      <li class="card">Python</li>
+      <li class="card">HTML</li>
+      <li class="card">JavaScript</li>
+      <li class="card">C++</li>
+      <li class="card">Flask</li>
+      <li class="card">Django</li>
+      <li class="card">FastAPI</li>
+      <li class="card">CSS</li>
+      <li class="card">Flutter</li>
+    </ul>
+  </div>
+
+  <div class="section" id="education">
+    <h2>Edu<span>cation</span></h2>
+    <div class="edu-card">Urage Secondary School — High School Certificate</div>
+    <div class="edu-card">Wolaita Sodo University — 2nd Year IT Student (Current)</div>
+  </div>
+
+  <div class="section" id="projects">
+    <h2>Pro<span>jects</span></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Voting Management System (C++)</h3>
+        <p>A simple voting management system built with C++ for Programming II in 1st semester. Manages voters and voting results with basic input and output.</p>
+      </div>
+      <div class="project-card">
+        <h3>Ethiopia Forex Currency Exchange Monitor</h3>
+        <p>A website showing real-time exchange rates from different banks in Ethiopia, making it easy to compare rates in one place.</p>
+      </div>
+      <div class="project-card">
+        <h3>WSU Dining App (Android)</h3>
+        <p>An Android app that digitalizes the student meal dining system using QR technology for faster and more accurate meal tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="certifications">
+    <h2>Certifi<span>cations</span></h2>
+    <div class="edu-card">Ethiocoders Certificate</div>
+    <div class="edu-card">Web Development Certificate</div>
+    <div class="edu-card">Full Stack Web Development Certificate — Yimaru</div>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Con<span>tact</span></h2>
+    <p class="contact-intro">Let's connect — reach out on any platform below.</p>
+    <div class="contact-grid">
+      <a href="mailto:tegegnw1997@gmail.com" class="contact-card">
+        <i class='bx bx-envelope'></i><span>Email</span>
+      </a>
+      <a href="tel:+251947347013" class="contact-card">
+        <i class='bx bx-phone'></i><span>Phone</span>
+      </a>
+      <a href="https://github.com/tegegndev" target="_blank" class="contact-card">
+        <i class='bx bxl-github'></i><span>GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/tegegndev" target="_blank" class="contact-card">
+        <i class='bx bxl-linkedin'></i><span>LinkedIn</span>
+      </a>
+      <a href="https://t.me/tegegndev" target="_blank" class="contact-card">
+        <i class='bx bxl-telegram'></i><span>Telegram</span>
+      </a>
+      <a href="https://web.facebook.com/profile.php?id=100093290310664" target="_blank" class="contact-card">
+        <i class='bx bxl-facebook'></i><span>Facebook</span>
+      </a>
+      <a href="https://instagram.com/twukianos" target="_blank" class="contact-card">
+        <i class='bx bxl-instagram'></i><span>Instagram</span>
+      </a>
+      <a href="https://tiktok.com/@tegegn.wukianos" target="_blank" class="contact-card">
+        <i class='bx bxl-tiktok'></i><span>TikTok</span>
+      </a>
+      <a href="https://x.com/winner_jlingz" target="_blank" class="contact-card">
+        <i class='bx bxl-twitter'></i><span>X</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Tegegn Wukianos. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
