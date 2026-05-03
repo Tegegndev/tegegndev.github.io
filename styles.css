@@ -170,6 +170,9 @@ body {
   border: 1px solid #d1d5db;
   padding: 12px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-thumb {
@@ -185,6 +188,7 @@ body {
 
 .project-copy {
   margin-bottom: 10px;
+  flex: 1;
 }
 
 .project-card h3 {
@@ -196,6 +200,32 @@ body {
   color: #555;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.project-description {
+  margin-bottom: 10px;
+}
+
+.project-description p {
+  margin-bottom: 0;
+}
+
+.project-description.is-collapsed p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.read-more-btn {
+  margin-top: 8px;
+  border: 0;
+  background: none;
+  color: #4f46e5;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
 }
 
 .tech-stack {

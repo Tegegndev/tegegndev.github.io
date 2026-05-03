@@ -87,7 +87,9 @@
         </div>
         <div class="project-copy">
           <h3>Voting Management System (C++)</h3>
-          <p>A simple voting management system built with C++ for Programming II in 1st semester. Manages voters and voting results with basic input and output.</p>
+          <div class="project-description">
+            <p>A simple voting management system built with C++ for Programming II in 1st semester. Manages voters and voting results with basic input and output.</p>
+          </div>
           <div class="tech-stack">
             <span><i class='bx bx-code-block'></i>C++</span>
             <span><i class='bx bx-terminal'></i>Console App</span>
@@ -106,7 +108,9 @@
         </div>
         <div class="project-copy">
           <h3>Ethiopia Forex Currency Exchange Monitor</h3>
-          <p>A website showing real-time exchange rates from different banks in Ethiopia, making it easy to compare rates in one place.</p>
+          <div class="project-description">
+            <p>A website showing real-time exchange rates from different banks in Ethiopia, making it easy to compare rates in one place.</p>
+          </div>
           <div class="tech-stack">
             <span><i class='bx bx-globe'></i>Web</span>
             <span><i class='bx bxl-javascript'></i>JavaScript</span>
@@ -130,7 +134,9 @@
         </div>
         <div class="project-copy">
           <h3>WSU Dining App (Android)</h3>
-          <p>An Android app that digitalizes the student meal dining system using QR technology for faster and more accurate meal tracking.</p>
+          <div class="project-description">
+            <p>An Android app that digitalizes the student meal dining system using QR technology for faster and more accurate meal tracking.</p>
+          </div>
           <div class="tech-stack">
             <span><i class='bx bxl-android'></i>Android</span>
             <span><i class='bx bx-qr-scan'></i>QR</span>
@@ -150,7 +156,9 @@
         </div>
         <div class="project-copy">
           <h3>Kokeba</h3>
-          <p>A TikTok-like web app for voice vocals and vent sharing, designed for short-form expression and social interaction.</p>
+          <div class="project-description">
+            <p>A TikTok-like web app for voice vocals and vent sharing, designed for short-form expression and social interaction.</p>
+          </div>
           <div class="tech-stack">
             <span><i class='bx bx-video'></i>Short Video</span>
             <span><i class='bx bx-microphone'></i>Voice</span>
@@ -174,7 +182,10 @@
         </div>
         <div class="project-copy">
           <h3>WSU Lost &amp; Found Telegram Bot</h3>
-          <p>A Telegram bot for the Wolaita Sodo University community to report lost and found items, browse listings, search by keyword, and contact item owners. It includes registration, channel membership checking, admin approval, channel publishing, pagination, and multilingual support in English, Amharic, and Afaan Oromoo.</p>
+          <div class="project-description is-collapsed">
+            <p>A Telegram bot for the Wolaita Sodo University community to report lost and found items, browse listings, search by keyword, and contact item owners. It includes registration, channel membership checking, admin approval, channel publishing, pagination, and multilingual support in English, Amharic, and Afaan Oromoo.</p>
+            <button class="read-more-btn" type="button" aria-expanded="false">Read More</button>
+          </div>
           <div class="tech-stack">
             <span><i class='bx bxl-telegram'></i>Telegram Bot</span>
             <span><i class='bx bx-search'></i>Search</span>
@@ -237,5 +248,18 @@
   </footer>
 
 
+  <script>
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+    readMoreButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const description = button.parentElement;
+        const isCollapsed = description.classList.toggle('is-collapsed');
+
+        button.textContent = isCollapsed ? 'Read More' : 'Show Less';
+        button.setAttribute('aria-expanded', String(!isCollapsed));
+      });
+    });
+  </script>
 </body>
 </html>
