@@ -5,26 +5,26 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #ebe8e1;
   color: #222;
   line-height: 1.6;
 }
 
 .navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
+  background-color: #f7f3ec;
+  border-bottom: 1px solid #d7c8b8;
   padding: 12px 16px;
 }
 
 .nav-inner {
-  max-width: 980px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
 .logo {
   font-weight: bold;
-  color: #4f46e5;
+  color: #8d634d;
   margin-bottom: 10px;
   font-size: 14px;
 }
@@ -38,84 +38,152 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #4d392d;
   font-size: 14px;
   padding: 6px 10px;
   border-radius: 5px;
 }
 
 .nav-links a:hover {
-  background-color: #e5e7eb;
+  background-color: #eadccf;
 }
 
 .hero {
-  max-width: 980px;
-  margin: 16px auto;
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  padding: 24px;
+  max-width: 1120px;
+  margin: 24px auto;
+  background: linear-gradient(90deg, #161311 0%, #161311 48%, #6f4d39 48%, #8d6852 100%);
+  border: 1px solid #2a221d;
+  border-radius: 18px;
+  padding: 0;
   display: flex;
-  gap: 24px;
-  align-items: center;
+  min-height: 620px;
+  overflow: hidden;
 }
 
-.hero img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #4f46e5;
+.hero-panel {
+  width: 50%;
+  padding: 70px 56px;
+  color: #f3ece5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero h1 {
-  font-size: 34px;
-  margin-bottom: 8px;
+  font-family: "Syne", sans-serif;
+  font-size: 86px;
+  line-height: 0.95;
+  margin-bottom: 18px;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 span {
+  color: #c99877;
+}
+
+.hero-kicker {
+  color: #c99877;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  margin-bottom: 18px;
 }
 
 .role {
-  color: #4f46e5;
-  font-weight: bold;
-  margin-bottom: 8px;
+  color: #f7e8da;
+  font-weight: 600;
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+.role span {
+  color: #c99877;
+  margin: 0 8px;
 }
 
 .bio {
-  color: #555;
-  margin-bottom: 8px;
-  max-width: 620px;
+  color: #d0c1b2;
+  margin-bottom: 12px;
+  max-width: 440px;
+  font-size: 19px;
 }
 
 .location {
-  color: #666;
-  margin-bottom: 14px;
+  color: #b79177;
+  margin-bottom: 24px;
+  font-size: 15px;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .cta-buttons a {
   text-decoration: none;
-  padding: 9px 14px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 0;
   font-weight: bold;
-  border: 1px solid #4f46e5;
+  border: 1px solid #c99877;
+  letter-spacing: 0.03em;
 }
 
 .cta-buttons a:first-child {
-  background-color: #4f46e5;
-  color: #fff;
+  background-color: #c99877;
+  color: #161311;
 }
 
 .cta-buttons a:last-child {
-  background-color: #fff;
-  color: #4f46e5;
+  background-color: transparent;
+  color: #f3ece5;
+}
+
+.hero-links {
+  display: flex;
+  gap: 14px;
+}
+
+.hero-links a {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #8b6952;
+  color: #c99877;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.hero-visual {
+  width: 50%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.05));
+}
+
+.hero-photo-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  display: block;
+  overflow: hidden;
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+  display: block;
+  filter: contrast(1.02) saturate(0.95);
 }
 
 .section {
-  max-width: 980px;
+  max-width: 1120px;
   margin: 16px auto;
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -284,7 +352,7 @@ body {
 }
 
 footer {
-  max-width: 980px;
+  max-width: 1120px;
   margin: 16px auto 20px;
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -298,11 +366,39 @@ footer {
 @media (max-width: 700px) {
   .hero {
     flex-direction: column;
-    text-align: center;
+    min-height: auto;
+    background: #161311;
   }
 
-  .cta-buttons {
-    justify-content: center;
+  .hero-panel,
+  .hero-visual {
+    width: 100%;
+  }
+
+  .hero-panel {
+    padding: 44px 24px 28px;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .bio {
+    font-size: 17px;
+  }
+
+  .hero-visual {
+    padding: 0;
+  }
+
+  .hero-photo-frame {
+    min-height: 380px;
+  }
+
+  .hero-photo-frame img {
+    height: 380px;
+    object-position: center top;
   }
 
   .section h2 {
