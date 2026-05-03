@@ -123,6 +123,11 @@ body {
   font-size: 19px;
 }
 
+.text-highlight {
+  color: var(--primary-soft);
+  font-weight: 700;
+}
+
 .location {
   color: #b79177;
   margin-bottom: 24px;
