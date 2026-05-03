@@ -210,24 +210,6 @@ body {
   margin-bottom: 0;
 }
 
-.project-description.is-collapsed p {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.read-more-btn {
-  margin-top: 8px;
-  border: 0;
-  background: none;
-  color: #4f46e5;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0;
-}
-
 .tech-stack {
   margin-top: 8px;
 }
