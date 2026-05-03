@@ -403,7 +403,8 @@ body {
 .skill-logo-card:hover {
   transform: translateY(-2px);
   border-color: var(--secondary-color);
-  background-color: var(--secondary-soft);
+  /* background-color: var(--secondary-soft); */
+  background-color: var(--primary-color);
 }
 
 .skill-logo-card img {
