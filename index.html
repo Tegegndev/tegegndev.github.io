@@ -12,20 +12,22 @@
   <meta name="theme-color" content="#161311">
   <meta name="geo.region" content="ET">
   <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
-  <link rel="canonical" href="https://tegegn.codes/">
+  <link rel="canonical" href="https://tegegndev.github.io/">
+  <link rel="alternate" hreflang="en-ET" href="https://tegegndev.github.io/">
+  <link rel="alternate" hreflang="x-default" href="https://tegegndev.github.io/">
   <link rel="icon" type="image/png" href="assets/images/pp.png">
   <link rel="apple-touch-icon" href="assets/images/pp.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Tegegn Wukianos | Ethiopian Developer Portfolio">
   <meta property="og:description" content="Portfolio of Tegegn Wukianos, an Ethiopian developer building web apps, backend systems, automation tools, and student-focused products.">
-  <meta property="og:url" content="https://tegegn.codes/">
+  <meta property="og:url" content="https://tegegndev.github.io/">
   <meta property="og:site_name" content="Tegegn Wukianos">
   <meta property="og:locale" content="en_ET">
-  <meta property="og:image" content="https://tegegn.codes/assets/images/pp.png">
+  <meta property="og:image" content="https://tegegndev.github.io/assets/images/pp.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tegegn Wukianos | Ethiopian Developer Portfolio">
   <meta name="twitter:description" content="Ethiopian developer portfolio featuring backend, web, automation, and student-focused software projects.">
-  <meta name="twitter:image" content="https://tegegn.codes/assets/images/pp.png">
+  <meta name="twitter:image" content="https://tegegndev.github.io/assets/images/pp.png">
   <link href="assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/fonts/google/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -33,37 +35,80 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Tegegn Wukianos",
-      "url": "https://tegegn.codes/",
-      "image": "https://tegegn.codes/assets/images/pp.png",
-      "jobTitle": "Ethiopian Developer",
-      "description": "Ethiopian developer and IT student focused on backend development, web apps, automation, and student-focused software.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Wolaita Sodo",
-        "addressCountry": "ET"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Wolaita Sodo University"
-      },
-      "sameAs": [
-        "https://github.com/tegegndev",
-        "https://linkedin.com/in/tegegndev",
-        "https://t.me/tegegndev",
-        "https://x.com/winner_jlingz",
-        "https://instagram.com/twukianos",
-        "https://tiktok.com/@tegegn.wukianos"
-      ],
-      "knowsAbout": [
-        "Web Development",
-        "Backend Development",
-        "JavaScript",
-        "Python",
-        "Automation",
-        "Web Scraping",
-        "API Development"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://tegegndev.github.io/#website",
+          "url": "https://tegegndev.github.io/",
+          "name": "Tegegn Wukianos",
+          "description": "Portfolio of Tegegn Wukianos, an Ethiopian developer building web apps, backend systems, automation tools, and student-focused products.",
+          "inLanguage": "en-ET"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://tegegndev.github.io/#person",
+          "name": "Tegegn Wukianos",
+          "url": "https://tegegndev.github.io/",
+          "image": "https://tegegndev.github.io/assets/images/pp.png",
+          "jobTitle": "Ethiopian Developer",
+          "description": "Ethiopian developer and IT student focused on backend development, web apps, automation, and student-focused software.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Wolaita Sodo",
+            "addressCountry": "ET"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Wolaita Sodo University"
+          },
+          "sameAs": [
+            "https://github.com/tegegndev",
+            "https://linkedin.com/in/tegegndev",
+            "https://t.me/tegegndev",
+            "https://x.com/winner_jlingz",
+            "https://instagram.com/twukianos",
+            "https://tiktok.com/@tegegn.wukianos"
+          ],
+          "knowsAbout": [
+            "Web Development",
+            "Backend Development",
+            "JavaScript",
+            "Python",
+            "Automation",
+            "Web Scraping",
+            "API Development"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://tegegndev.github.io/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is Tegegn Wukianos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tegegn Wukianos is an Ethiopian developer and IT student based in Wolaita Sodo, Ethiopia, with experience in web development, backend systems, automation, and software projects."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What type of development work does he do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "He builds backend services, websites, web apps, automation scripts, scraping tools, and student-focused software using Python, JavaScript, and modern web technologies."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I contact this Ethiopia dev?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can reach out by email, phone, GitHub, LinkedIn, Telegram, or the social links in the contact section."
+              }
+            }
+          ]
+        }
       ]
     }
   </script>
@@ -87,6 +132,7 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#seo-pages">Pages</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#languages">Languages</a></li>
             <li><a href="#education">Education</a></li>
@@ -153,6 +199,25 @@
       <article class="focus-card">
         <h3>Automation and Scraping</h3>
         <p>Data collection, browser automation, and workflow scripts using Selenium, Playwright, and custom tooling.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section seo-pages-section" id="seo-pages">
+    <h2>Search <span>Pages</span></h2>
+    <p class="section-intro">These focused pages target high-intent searches related to Ethiopian developers, backend work, and web development in Ethiopia.</p>
+    <div class="seo-page-grid">
+      <article class="seo-page-card">
+        <h3><a href="ethiopia-dev.html">Ethiopia Dev</a></h3>
+        <p>A dedicated landing page for people searching for an Ethiopia dev, Ethiopian developer, or software developer in Ethiopia.</p>
+      </article>
+      <article class="seo-page-card">
+        <h3><a href="ethiopian-web-developer.html">Ethiopian Web Developer</a></h3>
+        <p>A focused page about my web development work, responsive sites, and web app projects for clients and teams.</p>
+      </article>
+      <article class="seo-page-card">
+        <h3><a href="backend-developer-ethiopia.html">Backend Developer Ethiopia</a></h3>
+        <p>A page centered on backend engineering, APIs, automation, scraping, and database-backed application work.</p>
       </article>
     </div>
   </section>
@@ -404,7 +469,7 @@
           </div>
         </div>
         <div class="project-actions">
-          <a href="https://tegegn.codes" target="_blank" rel="noreferrer noopener">
+          <a href="https://tegegndev.github.io/" target="_blank" rel="noreferrer noopener">
             <i class='bx bx-link-external'></i>
             <span>Live View</span>
           </a>

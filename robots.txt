@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tegegn.codes/sitemap.xml
+Sitemap: https://tegegndev.github.io/sitemap.xml
