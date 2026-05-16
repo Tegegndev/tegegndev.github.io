@@ -222,6 +222,13 @@ body.is-loading {
   font-size: 15px;
 }
 
+.search-intent {
+  color: #e4d5c7;
+  max-width: 500px;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
 .cta-buttons {
   display: flex;
   gap: 12px;
@@ -333,6 +340,35 @@ body.is-loading {
 
 .about p {
   color: var(--text-body);
+}
+
+.section-intro {
+  color: var(--text-body);
+  margin-bottom: 16px;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.focus-card {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffaf4 0%, #f6eee4 100%);
+  padding: 18px;
+  box-shadow: 0 8px 18px rgba(50, 34, 24, 0.08);
+}
+
+.focus-card h3 {
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.focus-card p {
+  color: var(--text-body);
+  margin: 0;
 }
 
 .language-grid {
@@ -725,6 +761,29 @@ body.is-loading {
 
 .contact-intro {
   margin-bottom: 12px;
+  color: var(--text-body);
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--card-bg);
+  padding: 14px 16px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.faq-item p {
+  margin-top: 10px;
   color: var(--text-body);
 }
 
