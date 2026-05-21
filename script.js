@@ -4,7 +4,7 @@ const lastName = "Wukianos";
 window.addEventListener("load", function () {
   const heroFirstName = document.getElementById("hero-first-name");
   const heroLastName = document.getElementById("hero-last-name");
-  const footerEthiopianYear = document.getElementById("footer-ethiopian-year");
+  const footerEthiopianYear = document.getElementById("ethiopian-year");
 
   if (heroFirstName) {
     heroFirstName.textContent = firstName;
@@ -15,11 +15,10 @@ window.addEventListener("load", function () {
   }
 
   if (footerEthiopianYear) {
-    const ethiopianYear = new Intl.DateTimeFormat("en-US-u-ca-ethiopic", {
-      year: "numeric",
-    }).format(new Date());
+    const gregorianYear = new Date().getFullYear();
+    const ethiopianYear = gregorianYear - 9;
 
-    footerEthiopianYear.textContent = ethiopianYear;
+    footerEthiopianYear.textContent = ethiopianYear + " E.C.";
   }
 
   const preloader = document.getElementById("preloader");
@@ -32,5 +31,4 @@ window.addEventListener("load", function () {
     }, 650); 
   }, 500);
 });
-
 
