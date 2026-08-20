@@ -427,10 +427,25 @@
   <section class="section" id="projects">
     <h2>Pro<span>jects</span></h2>
     <p class="section-intro">These projects show the type of work I do as an Ethiopian developer across backend systems, web apps, automation, student software, and data tools.</p>
+
+    <div class="project-filters" role="tablist" aria-label="Filter projects by category">
+      <button class="filter-btn active" type="button" data-filter="all" role="tab" aria-selected="true">
+        <i class='bx bx-grid-alt'></i> All <span class="filter-count">(6)</span>
+      </button>
+      <button class="filter-btn" type="button" data-filter="web" role="tab" aria-selected="false">
+        <i class='bx bx-globe'></i> Web &amp; APIs <span class="filter-count">(2)</span>
+      </button>
+      <button class="filter-btn" type="button" data-filter="bots" role="tab" aria-selected="false">
+        <i class='bx bxl-telegram'></i> Telegram Bots <span class="filter-count">(2)</span>
+      </button>
+      <button class="filter-btn" type="button" data-filter="systems" role="tab" aria-selected="false">
+        <i class='bx bx-devices'></i> Systems &amp; Mobile <span class="filter-count">(2)</span>
+      </button>
+    </div>
+
     <div class="projects-grid">
 
-
-      <div class="project-card">
+      <div class="project-card" data-category="systems">
         <div class="project-thumb">
           <img src="assets/images/projects/voting_system.png" alt="Voting management system project preview" loading="lazy" decoding="async">
         </div>
@@ -452,8 +467,7 @@
         </div>
       </div>
 
-
-      <div class="project-card">
+      <div class="project-card" data-category="web">
         <div class="project-thumb">
           <img src="assets/images/projects/forex-monitor.jpg" alt="Ethiopia forex currency exchange monitor project preview" loading="lazy" decoding="async">
         </div>
@@ -480,9 +494,7 @@
         </div>
       </div>
 
-
-
-      <div class="project-card">
+      <div class="project-card" data-category="systems">
         <div class="project-thumb">
           <img src="assets/images/projects/wsu_dining.png" alt="WSU Dining App Android project preview" loading="lazy" decoding="async">
         </div>
@@ -504,7 +516,8 @@
           </a>
         </div>
       </div>
-      <div class="project-card">
+
+      <div class="project-card" data-category="web">
         <div class="project-thumb">
           <img src="assets/images/projects/kokeba.png" alt="Kokeba short video web app project preview" loading="lazy" decoding="async">
         </div>
@@ -530,7 +543,8 @@
           </a>
         </div>
       </div>
-      <div class="project-card">
+
+      <div class="project-card" data-category="bots">
         <div class="project-thumb">
           <img src="assets/images/projects/wsu_lost.jpg" alt="WSU Lost and Found Telegram bot project preview" loading="lazy" decoding="async">
         </div>
@@ -552,7 +566,8 @@
           </a>
         </div>
       </div>
-      <div class="project-card">
+
+      <div class="project-card" data-category="bots">
         <div class="project-thumb">
           <img src="assets/images/projects/tg_story.jpg" alt="Telegram story downloader bot project preview" loading="lazy" decoding="async">
         </div>
