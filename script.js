@@ -1,12 +1,15 @@
-    window.addEventListener("load", function () {
-      const preloader = document.getElementById("preloader");
-      setTimeout(function () {
-        document.body.classList.remove("is-loading");
-        if (!preloader) return;
-        preloader.classList.add("hide");
-        setTimeout(function () {
-          preloader.remove();
-        }, 650);
-      }, 1000);
-    });
+const dismissPreloader = () => {
+  document.body.classList.remove("is-loading");
+  const preloader = document.getElementById("preloader");
+  if (!preloader) return;
+  preloader.classList.add("hide");
+  setTimeout(() => preloader.remove(), 250);
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", dismissPreloader);
+} else {
+  dismissPreloader();
+}
+
   
