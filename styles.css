@@ -877,42 +877,128 @@ body.is-loading {
 }
 
 .contact-card {
-  text-decoration: none;
+  position: relative;
   border: 1px solid var(--border-color);
   border-radius: 10px;
   background: var(--card-bg);
-  color: var(--text-dark);
   min-height: 88px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  padding: 10px;
-  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-card:hover {
   border-color: var(--secondary-color);
   background-color: var(--secondary-soft);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62, 78, 56, 0.12);
 }
 
-.contact-card i {
+.contact-card-link {
+  text-decoration: none;
+  color: var(--text-dark);
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px 10px;
+}
+
+.contact-card-link i {
   font-size: 24px;
   color: var(--primary-color);
   transition: color 0.2s ease;
 }
 
-.contact-card span {
+.contact-card-link span {
   font-size: 12px;
   color: #5c4638;
   font-weight: bold;
+  transition: color 0.2s ease;
 }
 
-.contact-card:hover i,
-.contact-card:hover span {
+.contact-card:hover .contact-card-link i,
+.contact-card:hover .contact-card-link span {
   color: var(--secondary-color);
+}
+
+.copy-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background: rgba(141, 99, 77, 0.08);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  z-index: 2;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  transform: scale(1.12);
+}
+
+.copy-btn.copied {
+  background: #3e7e43;
+  color: #fff;
+  border-color: #3e7e43;
+  opacity: 1;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #201712;
+  color: #f7f3ec;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #4d3a2d;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  font-size: 13.5px;
+  font-weight: 500;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28), visibility 0.25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toast i {
+  color: #79d685;
+  font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    justify-content: center;
+  }
 }
 
 footer {

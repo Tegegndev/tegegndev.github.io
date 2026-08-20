@@ -38,9 +38,77 @@ const initProjectFilters = () => {
   });
 };
 
+let toastTimeout = null;
+
+const showToast = (message) => {
+  const toast = document.getElementById("toast");
+  const toastText = toast ? toast.querySelector(".toast-text") : null;
+  if (!toast || !toastText) return;
+
+  toastText.textContent = message;
+  toast.classList.add("show");
+
+  if (toastTimeout) {
+    clearTimeout(toastTimeout);
+  }
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2400);
+};
+
+const copyToClipboard = async (text, label) => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    }
+    showToast(`Copied ${label || text} to clipboard!`);
+  } catch (err) {
+    showToast(`Failed to copy: ${text}`);
+  }
+};
+
+const initCopyButtons = () => {
+  const copyBtns = document.querySelectorAll(".copy-btn");
+  if (!copyBtns.length) return;
+
+  copyBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const text = btn.getAttribute("data-copy");
+      const label = btn.getAttribute("data-label");
+
+      if (text) {
+        copyToClipboard(text, label);
+        const icon = btn.querySelector("i");
+        if (icon) {
+          icon.className = "bx bx-check";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            icon.className = "bx bx-copy";
+            btn.classList.remove("copied");
+          }, 1500);
+        }
+      }
+    });
+  });
+};
+
 const initApp = () => {
   dismissPreloader();
   initProjectFilters();
+  initCopyButtons();
 };
 
 if (document.readyState === "loading") {
@@ -48,6 +116,7 @@ if (document.readyState === "loading") {
 } else {
   initApp();
 }
+
 
 
   
