@@ -115,6 +115,8 @@
 </head>
 <body class="is-loading">
 
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <div class="preloader" id="preloader" aria-label="Loading page">
     <div class="preloader-mark" aria-hidden="true">
       <span class="angle">&lt;</span>
@@ -124,25 +126,28 @@
     </div>
   </div>
 
-  <nav class="navbar" aria-label="Primary">
+  <nav class="navbar" id="navbar" aria-label="Primary">
     <div class="nav-inner">
-       <div class="logo">&lt;T E G E G N W U K I A N O S/></div>
-      <div class="nav-row">
+      <a href="#home" class="logo" aria-label="Tegegn Wukianos home">&lt;TEGEGN WUKIANOS /&gt;</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class='bx bx-menu'></i>
+      </button>
+      <div class="nav-row" id="nav-menu">
         <div class="nav-links">
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#seo-pages">Pages</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#languages">Languages</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certifications">Certs</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#seo-pages" class="nav-link">Pages</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#languages" class="nav-link">Languages</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#certifications" class="nav-link">Certs</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
         </div>
         <a href="assets/images/Tegegn_Wukainos_CV.pdf" class="nav-cv-btn" target="_blank" rel="noreferrer" download>
-          Download CV
+          <i class='bx bx-download'></i> Download CV
         </a>
       </div>
     </div>
@@ -151,28 +156,59 @@
   <main>
   <header class="hero" id="home">
     <div class="hero-panel">
-      <p class="hero-kicker">HELLO, I'M</p>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        <span>Available for projects &bull; Based in Ethiopia</span>
+      </div>
+      <p class="hero-kicker">FULL-STACK &amp; BACKEND DEVELOPER</p>
       <h1>Tegegn<br><span>Wukianos</span></h1>
       <p class="role">Ethiopian Developer <span>&bull;</span> Backend and Web Builder</p>
       <p class="bio">I am an IT student at <span class="text-highlight">Wolaita Sodo University</span> building practical web applications, backend systems, and automation tools. This portfolio highlights my work as an Ethiopian developer focused on useful software for local and global users.</p>
-      <p class="location">Based in Wolaita Sodo, Ethiopia</p>
+      <p class="location"><i class='bx bx-map-pin'></i> Wolaita Sodo, Ethiopia</p>
       <p class="search-intent">Looking for an Ethiopia dev, Ethiopian web developer, or backend developer in Ethiopia? This site showcases my projects, skills, and contact details.</p>
       <div class="cta-buttons">
-        <a href="#projects">View My Work</a>
-        <a href="#contact">Contact Me</a>
+        <a href="#projects" class="cta-primary"><i class='bx bx-folder-open'></i> View My Work</a>
+        <a href="#contact" class="cta-secondary"><i class='bx bx-send'></i> Get in Touch</a>
       </div>
       <div class="hero-links">
-        <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-        <a href="https://linkedin.com/in/tegegndev" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-        <a href="mailto:tegegnw1997@gmail.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+        <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer" aria-label="GitHub Profile" title="GitHub"><i class='bx bxl-github'></i></a>
+        <a href="https://linkedin.com/in/tegegndev" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://t.me/tegegndev" target="_blank" rel="noreferrer" aria-label="Telegram Profile" title="Telegram"><i class='bx bxl-telegram'></i></a>
+        <a href="mailto:tegegnw1997@gmail.com" aria-label="Send Email" title="Email"><i class='bx bx-envelope'></i></a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-photo-frame">
         <img src="assets/images/pp.png" alt="Portrait of Tegegn Wukianos, Ethiopian developer" fetchpriority="high">
+        <div class="hero-badge">
+          <i class='bx bx-code-block'></i>
+          <div class="hero-badge-text">
+            <strong>Backend &amp; Web</strong>
+            <span>Python &bull; JS &bull; APIs</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
+
+  <div class="metrics-bar" aria-label="Key highlights">
+    <div class="metric-card">
+      <div class="metric-num">6+</div>
+      <div class="metric-label">Featured Projects</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">16+</div>
+      <div class="metric-label">Tech &amp; Frameworks</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">3</div>
+      <div class="metric-label">Languages Spoken</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">WSU</div>
+      <div class="metric-label">IT Student</div>
+    </div>
+  </div>
 
 
 
@@ -416,9 +452,39 @@
 
   <section class="section" id="education">
     <h2>Edu<span>cation</span></h2>
-    <div class="edu-card">Dogo Primary School — Primary School 1-8</div>
-    <div class="edu-card">Urage Secondary School — 9-12 High School Certificate</div>
-    <div class="edu-card">Wolaita Sodo University — 2nd Year IT Student (Current)</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Wolaita Sodo University</h3>
+            <span class="timeline-badge current">Current &bull; 2nd Year</span>
+          </div>
+          <p class="timeline-meta">BSc in Information Technology</p>
+          <p class="timeline-desc">Specializing in software engineering, backend systems, database management, and network architecture.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Urage Secondary School</h3>
+            <span class="timeline-badge">Grades 9-12</span>
+          </div>
+          <p class="timeline-meta">Ethiopian Higher Education Entrance Certificate</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Dogo Primary School</h3>
+            <span class="timeline-badge">Grades 1-8</span>
+          </div>
+          <p class="timeline-meta">Primary School Certificate</p>
+        </div>
+      </div>
+    </div>
   </section>
 
 
@@ -737,6 +803,10 @@
     <i class='bx bx-check-circle'></i>
     <span class="toast-text"></span>
   </div>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class='bx bx-chevron-up'></i>
+  </button>
 
   <footer>
     <p>&copy; 2026 Tegegn Wukianos. All rights reserved.</p>
