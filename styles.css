@@ -2621,36 +2621,63 @@ footer {
    Custom Fluid Interactive Cursor
    ========================================================================== */
 
+/* Hide default cursor on desktop so the custom glowing cursor takes over */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  summary,
+  .nav-cv-btn,
+  .theme-toggle,
+  .nav-toggle,
+  .filter-btn,
+  .copy-btn,
+  .form-submit-btn,
+  .back-to-top,
+  .project-card,
+  .cert-card,
+  .focus-card,
+  .skill-logo-card,
+  .tool-card,
+  .contact-card,
+  .contact-card-link,
+  .hero-links a,
+  .cta-primary,
+  .cta-secondary {
+    cursor: none !important;
+  }
+}
+
 .custom-cursor-dot,
 .custom-cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
+  pointer-events: none !important;
+  z-index: 2147483647;
   opacity: 0;
   will-change: transform, opacity;
   transition: opacity 0.3s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .custom-cursor-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   background-color: var(--primary-color);
-  margin-top: -4px;
-  margin-left: -4px;
-  box-shadow: 0 0 10px rgba(141, 99, 77, 0.4);
+  margin-top: -4.5px;
+  margin-left: -4.5px;
+  box-shadow: 0 0 12px rgba(141, 99, 77, 0.55);
 }
 
 .custom-cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--primary-color);
-  background-color: rgba(141, 99, 77, 0.04);
-  margin-top: -18px;
-  margin-left: -18px;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--primary-color);
+  background-color: rgba(141, 99, 77, 0.05);
+  margin-top: -19px;
+  margin-left: -19px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s ease,
               background-color 0.25s ease,
               opacity 0.3s ease;
@@ -2663,13 +2690,13 @@ footer {
 
 /* Hovering over links / buttons / cards */
 .custom-cursor-ring.cursor-hover {
-  transform: scale(1.65);
+  transform: scale(1.8);
   border-color: var(--secondary-color);
-  background-color: rgba(46, 111, 120, 0.15);
+  background-color: rgba(46, 111, 120, 0.2);
 }
 
 .custom-cursor-dot.cursor-hover {
-  transform: scale(0.55);
+  transform: scale(0.5);
   background-color: var(--secondary-color);
 }
 
@@ -2677,27 +2704,27 @@ footer {
 .custom-cursor-ring.cursor-click {
   transform: scale(0.85);
   border-color: var(--primary-color);
-  background-color: rgba(141, 99, 77, 0.25);
+  background-color: rgba(141, 99, 77, 0.3);
 }
 
 .custom-cursor-dot.cursor-click {
-  transform: scale(1.35);
+  transform: scale(1.4);
 }
 
 /* Dark Mode Cursor */
 [data-theme="dark"] .custom-cursor-dot {
   background-color: var(--primary-color);
-  box-shadow: 0 0 12px rgba(201, 152, 119, 0.6);
+  box-shadow: 0 0 14px rgba(201, 152, 119, 0.7);
 }
 
 [data-theme="dark"] .custom-cursor-ring {
   border-color: var(--primary-color);
-  background-color: rgba(201, 152, 119, 0.06);
+  background-color: rgba(201, 152, 119, 0.08);
 }
 
 [data-theme="dark"] .custom-cursor-ring.cursor-hover {
   border-color: var(--secondary-color);
-  background-color: rgba(56, 189, 248, 0.18);
+  background-color: rgba(56, 189, 248, 0.22);
 }
 
 [data-theme="dark"] .custom-cursor-dot.cursor-hover {
