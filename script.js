@@ -121,14 +121,16 @@ const initScrollEnhancements = () => {
   const navbar = document.getElementById("navbar");
   const navLinks = document.querySelectorAll(".nav-links a");
   const sections = document.querySelectorAll("header[id], section[id]");
+  const heroPhoto = document.querySelector(".hero-photo-frame img");
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let ticking = false;
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-    // Scroll progress bar
+    // Smooth scroll progress bar
     if (progressBar && scrollHeight > 0) {
       const progressPercent = (scrollTop / scrollHeight) * 100;
       progressBar.style.width = `${progressPercent}%`;
@@ -152,10 +154,16 @@ const initScrollEnhancements = () => {
       }
     }
 
+    // Subtle smooth parallax on hero photo
+    if (heroPhoto && !prefersReducedMotion && scrollTop < 800) {
+      const parallaxY = (scrollTop * 0.08).toFixed(2);
+      heroPhoto.style.transform = `translateY(${parallaxY}px) scale(1.03)`;
+    }
+
     // Active link highlighting
     let currentSectionId = "";
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 140;
+      const sectionTop = section.offsetTop - 150;
       const sectionHeight = section.offsetHeight;
       if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
         currentSectionId = section.getAttribute("id");
@@ -187,6 +195,27 @@ const initScrollEnhancements = () => {
   );
 
   handleScroll();
+
+  // Smooth Momentum Anchor Navigation with dynamic navbar offset
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const navHeight = navbar ? navbar.offsetHeight : 70;
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 14;
+        window.scrollTo({
+          top: targetPos,
+          behavior: "smooth"
+        });
+        if (history.pushState) {
+          history.pushState(null, null, href);
+        }
+      }
+    });
+  });
 
   if (backToTopBtn) {
     backToTopBtn.addEventListener("click", () => {
@@ -275,34 +304,39 @@ const initThemeToggle = () => {
 };
 
 const initScrollReveal = () => {
-  // Check if reduced motion is preferred
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReducedMotion) {
-    document.querySelectorAll(".reveal-item").forEach((el) => el.classList.add("is-revealed"));
+    document
+      .querySelectorAll(".reveal-item, .reveal-scale, .reveal-slide-right")
+      .forEach((el) => el.classList.add("is-revealed"));
     return;
   }
 
-  const revealTargets = document.querySelectorAll(
-    ".section, .metric-card, .focus-card, .seo-page-card, .language-card, .skill-logo-card, .tool-card, .timeline-item, .project-card, .cert-card, .faq-item, .contact-card"
-  );
+  // Assign contextual animation styles
+  document.querySelectorAll(".timeline-item").forEach((el) => el.classList.add("reveal-slide-right"));
+  document
+    .querySelectorAll(".skill-logo-card, .tool-card, .contact-card, .metric-card, .seo-page-card")
+    .forEach((el) => el.classList.add("reveal-scale"));
+  document
+    .querySelectorAll(".section, .focus-card, .language-card, .project-card, .cert-card, .faq-item, .quick-message-box")
+    .forEach((el) => el.classList.add("reveal-item"));
 
-  if (!revealTargets.length) return;
+  const allRevealElements = document.querySelectorAll(".reveal-item, .reveal-scale, .reveal-slide-right");
+  if (!allRevealElements.length) return;
 
   // Track parent grids to automatically stagger sibling cards
   const parentGrids = new Set();
-
-  revealTargets.forEach((el) => {
-    el.classList.add("reveal-item");
+  allRevealElements.forEach((el) => {
     if (el.parentElement) {
       parentGrids.add(el.parentElement);
     }
   });
 
   parentGrids.forEach((parent) => {
-    const children = parent.querySelectorAll(":scope > .reveal-item");
+    const children = parent.querySelectorAll(":scope > .reveal-item, :scope > .reveal-scale, :scope > .reveal-slide-right");
     if (children.length > 1) {
       children.forEach((child, idx) => {
-        const delay = Math.min((idx % 6) * 0.07, 0.42);
+        const delay = Math.min((idx % 8) * 0.065, 0.45);
         child.style.setProperty("--reveal-delay", `${delay}s`);
       });
     }
@@ -318,12 +352,12 @@ const initScrollReveal = () => {
       });
     },
     {
-      rootMargin: "0px 0px -40px 0px",
-      threshold: 0.08
+      rootMargin: "0px 0px -35px 0px",
+      threshold: 0.06
     }
   );
 
-  revealTargets.forEach((el) => observer.observe(el));
+  allRevealElements.forEach((el) => observer.observe(el));
 };
 
 const initMetricsCounter = () => {
