@@ -179,7 +179,7 @@
       </div>
       <p class="hero-kicker">FULL-STACK &amp; BACKEND DEVELOPER</p>
       <h1>Tegegn<br><span>Wukianos</span></h1>
-      <p class="role">Ethiopian Developer <span>&bull;</span> Backend and Web Builder</p>
+      <p class="role">Ethiopian Developer <span>&bull;</span> <span class="typing-text" id="typing-role" data-words='["Backend &amp; Web Builder", "Python &amp; API Developer", "Automation &amp; Scraping Specialist", "IT Student @ Wolaita Sodo"]'>Backend and Web Builder</span><span class="typing-cursor" aria-hidden="true">|</span></p>
       <p class="bio">I am an IT student at <span class="text-highlight">Wolaita Sodo University</span> building practical web applications, backend systems, and automation tools. This portfolio highlights my work as an Ethiopian developer focused on useful software for local and global users.</p>
       <p class="location"><i class='bx bx-map-pin'></i> Wolaita Sodo, Ethiopia</p>
       <p class="search-intent">Looking for an Ethiopia dev, Ethiopian web developer, or backend developer in Ethiopia? This site showcases my projects, skills, and contact details.</p>
@@ -679,40 +679,40 @@
     <h2>Certifi<span>cations</span></h2>
     <p class="cert-intro">Here are some certificates I earned from different programs and companies.</p>
     <div class="cert-gallery">
-      <a href="assets/images/certs/ai_fundamentals_udacity_cert.png" target="_blank" rel="noreferrer" class="cert-card featured-cert">
+      <a href="assets/images/certs/ai_fundamentals_udacity_cert.png" target="_blank" rel="noreferrer" class="cert-card featured-cert" data-lightbox="true" data-caption="Artificial Intelligence Fundamentals — Udacity">
         <div class="cert-art udacity-art">
           <img src="assets/images/certs/ai_fundamentals_udacity_cert.png" alt="Artificial Intelligence Fundamentals certificate from Udacity" loading="lazy" decoding="async">
         </div>
         <div class="cert-caption">
           <h3>Artificial Intelligence Fundamentals</h3>
-          <p>Udacity</p>
+          <p>Udacity &bull; Click to expand</p>
         </div>
       </a>
-      <a href="assets/images/certs/genrative_ai_aws_cert.png" target="_blank" rel="noreferrer" class="cert-card">
+      <a href="assets/images/certs/genrative_ai_aws_cert.png" target="_blank" rel="noreferrer" class="cert-card" data-lightbox="true" data-caption="Generative AI with AWS — Analytics Vidhya">
         <div class="cert-art aws-art">
           <img src="assets/images/certs/genrative_ai_aws_cert.png" alt="Generative AI with AWS certificate" loading="lazy" decoding="async">
         </div>
         <div class="cert-caption">
           <h3>Generative AI with AWS</h3>
-          <p>Analytics Vidhya</p>
+          <p>Analytics Vidhya &bull; Click to expand</p>
         </div>
       </a>
-      <a href="assets/images/certs/muyalogy.png" target="_blank" rel="noreferrer" class="cert-card">
+      <a href="assets/images/certs/muyalogy.png" target="_blank" rel="noreferrer" class="cert-card" data-lightbox="true" data-caption="Build Your First Website — Muyalogy">
         <div class="cert-art muyalogy-art">
           <img src="assets/images/certs/muyalogy.png" alt="Build Your First Website certificate from Muyalogy" loading="lazy" decoding="async">
         </div>
         <div class="cert-caption">
           <h3>Build Your First Website</h3>
-          <p>Muyalogy</p>
+          <p>Muyalogy &bull; Click to expand</p>
         </div>
       </a>
-      <a href="assets/images/certs/cert1.png" target="_blank" rel="noreferrer" class="cert-card wide-cert">
+      <a href="assets/images/certs/cert1.png" target="_blank" rel="noreferrer" class="cert-card wide-cert" data-lightbox="true" data-caption="Local SEO Course 2023 — Skillshare">
         <div class="cert-art skillshare-art">
           <img src="assets/images/certs/cert1.png" alt="Skillshare Local SEO Course certificate" loading="lazy" decoding="async">
         </div>
         <div class="cert-caption">
           <h3>Local SEO Course 2023</h3>
-          <p>Skillshare</p>
+          <p>Skillshare &bull; Click to expand</p>
         </div>
       </a>
     </div>
@@ -738,7 +738,8 @@
 
   <section class="section" id="contact">
     <h2>Con<span>tact</span></h2>
-    <p class="contact-intro">Let's connect — reach out on any platform below or click the copy icon to copy my details.</p>
+    <p class="contact-intro">Let's connect — reach out on any platform below, send a quick message, or click the copy icon to copy my details.</p>
+    
     <div class="contact-grid">
       <div class="contact-card">
         <a href="mailto:tegegnw1997@gmail.com" class="contact-card-link" aria-label="Email: tegegnw1997@gmail.com">
@@ -813,8 +814,48 @@
         </button>
       </div>
     </div>
+
+    <!-- Quick Message Box -->
+    <div class="quick-message-box">
+      <h3><i class='bx bx-message-rounded-dots'></i> Send a Quick Message</h3>
+      <form id="quick-contact-form" class="quick-contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-name">Your Name</label>
+            <input type="text" id="form-name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="form-email">Your Email / Telegram</label>
+            <input type="text" id="form-email" placeholder="john@example.com or @username" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="form-message">Message</label>
+          <textarea id="form-message" rows="3" placeholder="Hi Tegegn, let's discuss a project..." required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="form-submit-btn">
+            <i class='bx bx-send'></i> Send via Telegram / Email
+          </button>
+        </div>
+      </form>
+    </div>
   </section>
   </main>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog" aria-label="Certificate and project image preview">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close preview">
+        <i class='bx bx-x'></i>
+      </button>
+      <div class="lightbox-image-wrapper">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      </div>
+      <div class="lightbox-caption-bar" id="lightbox-caption"></div>
+    </div>
+  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite">
     <i class='bx bx-check-circle'></i>

@@ -3,7 +3,7 @@ const dismissPreloader = () => {
   const preloader = document.getElementById("preloader");
   if (!preloader) return;
   preloader.classList.add("hide");
-  setTimeout(() => preloader.remove(), 250);
+  setTimeout(() => preloader.remove(), 350);
 };
 
 const initProjectFilters = () => {
@@ -30,8 +30,15 @@ const initProjectFilters = () => {
 
         if (isMatch) {
           card.classList.remove("is-hidden");
+          card.classList.add("filter-animating-in");
+          card.classList.remove("filter-animating-out");
         } else {
-          card.classList.add("is-hidden");
+          card.classList.add("filter-animating-out");
+          setTimeout(() => {
+            if (card.classList.contains("filter-animating-out")) {
+              card.classList.add("is-hidden");
+            }
+          }, 200);
         }
       });
     });
@@ -46,6 +53,9 @@ const showToast = (message) => {
   if (!toast || !toastText) return;
 
   toastText.textContent = message;
+  toast.classList.remove("show");
+  // Trigger reflow for re-animation
+  void toast.offsetWidth;
   toast.classList.add("show");
 
   if (toastTimeout) {
@@ -54,7 +64,7 @@ const showToast = (message) => {
 
   toastTimeout = setTimeout(() => {
     toast.classList.remove("show");
-  }, 2400);
+  }, 2600);
 };
 
 const copyToClipboard = async (text, label) => {
@@ -98,7 +108,7 @@ const initCopyButtons = () => {
           setTimeout(() => {
             icon.className = "bx bx-copy";
             btn.classList.remove("copied");
-          }, 1500);
+          }, 1600);
         }
       }
     });
@@ -108,8 +118,11 @@ const initCopyButtons = () => {
 const initScrollEnhancements = () => {
   const progressBar = document.getElementById("scroll-progress");
   const backToTopBtn = document.getElementById("back-to-top");
+  const navbar = document.getElementById("navbar");
   const navLinks = document.querySelectorAll(".nav-links a");
   const sections = document.querySelectorAll("header[id], section[id]");
+
+  let ticking = false;
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -119,6 +132,15 @@ const initScrollEnhancements = () => {
     if (progressBar && scrollHeight > 0) {
       const progressPercent = (scrollTop / scrollHeight) * 100;
       progressBar.style.width = `${progressPercent}%`;
+    }
+
+    // Navbar scrolled state elevation
+    if (navbar) {
+      if (scrollTop > 20) {
+        navbar.classList.add("is-scrolled");
+      } else {
+        navbar.classList.remove("is-scrolled");
+      }
     }
 
     // Back to top button
@@ -133,7 +155,7 @@ const initScrollEnhancements = () => {
     // Active link highlighting
     let currentSectionId = "";
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 140;
       const sectionHeight = section.offsetHeight;
       if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
         currentSectionId = section.getAttribute("id");
@@ -149,9 +171,21 @@ const initScrollEnhancements = () => {
         }
       });
     }
+
+    ticking = false;
   };
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
   handleScroll();
 
   if (backToTopBtn) {
@@ -240,9 +274,307 @@ const initThemeToggle = () => {
   });
 };
 
+const initScrollReveal = () => {
+  // Check if reduced motion is preferred
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
+    document.querySelectorAll(".reveal-item").forEach((el) => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const revealTargets = document.querySelectorAll(
+    ".section, .metric-card, .focus-card, .seo-page-card, .language-card, .skill-logo-card, .tool-card, .timeline-item, .project-card, .cert-card, .faq-item, .contact-card"
+  );
+
+  if (!revealTargets.length) return;
+
+  // Track parent grids to automatically stagger sibling cards
+  const parentGrids = new Set();
+
+  revealTargets.forEach((el) => {
+    el.classList.add("reveal-item");
+    if (el.parentElement) {
+      parentGrids.add(el.parentElement);
+    }
+  });
+
+  parentGrids.forEach((parent) => {
+    const children = parent.querySelectorAll(":scope > .reveal-item");
+    if (children.length > 1) {
+      children.forEach((child, idx) => {
+        const delay = Math.min((idx % 6) * 0.07, 0.42);
+        child.style.setProperty("--reveal-delay", `${delay}s`);
+      });
+    }
+  });
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.08
+    }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+};
+
+const initMetricsCounter = () => {
+  const metricCards = document.querySelectorAll(".metric-card");
+  if (!metricCards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const numEl = entry.target.querySelector(".metric-num");
+          if (numEl) {
+            const raw = numEl.textContent.trim();
+            const match = raw.match(/^(\d+)(\+?)$/);
+            if (match) {
+              const targetVal = parseInt(match[1], 10);
+              const suffix = match[2] || "";
+              const duration = 1200;
+              const startTime = performance.now();
+
+              const updateCount = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Smooth exponential ease-out
+                const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                const current = Math.floor(easeOut * targetVal);
+                numEl.textContent = `${current}${suffix}`;
+
+                if (progress < 1) {
+                  requestAnimationFrame(updateCount);
+                } else {
+                  numEl.textContent = `${targetVal}${suffix}`;
+                }
+              };
+
+              requestAnimationFrame(updateCount);
+            }
+          }
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  metricCards.forEach((c) => observer.observe(c));
+};
+
+const initLanguageProgressBars = () => {
+  const languageCards = document.querySelectorAll(".language-card");
+  if (!languageCards.length) return;
+
+  languageCards.forEach((card) => {
+    const abilities = card.querySelectorAll(".ability");
+    abilities.forEach((ability) => {
+      const valEl = ability.querySelector(".ability-value");
+      if (!valEl) return;
+
+      const match = valEl.textContent.match(/(\d+)%/);
+      if (match) {
+        const pct = match[1];
+        // If track doesn't exist yet, insert it
+        let track = ability.querySelector(".ability-track");
+        if (!track) {
+          track = document.createElement("div");
+          track.className = "ability-track";
+          const bar = document.createElement("div");
+          bar.className = "ability-bar";
+          bar.style.setProperty("--progress-pct", `${pct}%`);
+          track.appendChild(bar);
+          ability.appendChild(track);
+        }
+      }
+    });
+  });
+};
+
+const initTypingEffect = () => {
+  const el = document.getElementById("typing-role");
+  if (!el) return;
+
+  const rawWords = el.getAttribute("data-words");
+  let words = ["Backend & Web Builder", "Python & API Developer", "Automation & Scraping Specialist", "IT Student @ Wolaita Sodo"];
+  try {
+    if (rawWords) words = JSON.parse(rawWords);
+  } catch (e) {
+    // fallback
+  }
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeSpeed = 90;
+
+  const type = () => {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      el.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 45;
+    } else {
+      el.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 90;
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typeSpeed = 2200; // Pause at end of word
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeSpeed = 450; // Pause before typing next word
+    }
+
+    setTimeout(type, typeSpeed);
+  };
+
+  setTimeout(type, 1000);
+};
+
+const init3DTilt = () => {
+  // Only apply tilt on non-touch devices
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+
+  const tiltCards = document.querySelectorAll(
+    ".project-card, .cert-card, .hero-photo-frame, .focus-card, .metric-card"
+  );
+
+  tiltCards.forEach((card) => {
+    let bounds;
+
+    const onMouseEnter = () => {
+      bounds = card.getBoundingClientRect();
+      card.style.transition = "transform 0.1s ease-out, box-shadow 0.25s ease";
+    };
+
+    const onMouseMove = (e) => {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+      const xPct = mouseX / bounds.width - 0.5;
+      const yPct = mouseY / bounds.height - 0.5;
+
+      const rotateX = (-yPct * 10).toFixed(2);
+      const rotateY = (xPct * 10).toFixed(2);
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    };
+
+    const onMouseLeave = () => {
+      card.style.transition = "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease";
+      card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)";
+    };
+
+    card.addEventListener("mouseenter", onMouseEnter);
+    card.addEventListener("mousemove", onMouseMove);
+    card.addEventListener("mouseleave", onMouseLeave);
+  });
+};
+
+const initLightbox = () => {
+  const modal = document.getElementById("lightbox-modal");
+  const modalImg = document.getElementById("lightbox-img");
+  const modalCaption = document.getElementById("lightbox-caption");
+  const closeBtn = document.getElementById("lightbox-close");
+  const backdrop = document.getElementById("lightbox-backdrop");
+
+  if (!modal || !modalImg || !closeBtn || !backdrop) return;
+
+  const openLightbox = (imgSrc, captionText) => {
+    modalImg.src = imgSrc;
+    modalImg.alt = captionText || "Preview";
+    if (modalCaption) {
+      modalCaption.textContent = captionText || "";
+    }
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      if (!modal.classList.contains("active")) {
+        modalImg.src = "";
+      }
+    }, 300);
+  };
+
+  // Attach to lightbox links (e.g. certificates)
+  const lightboxLinks = document.querySelectorAll('[data-lightbox="true"]');
+  lightboxLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      const caption = link.getAttribute("data-caption") || link.querySelector("h3")?.textContent || "";
+      if (href) {
+        openLightbox(href, caption);
+      }
+    });
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  backdrop.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+};
+
+const initQuickContactForm = () => {
+  const form = document.getElementById("quick-contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("form-name")?.value.trim() || "";
+    const contactInfo = document.getElementById("form-email")?.value.trim() || "";
+    const message = document.getElementById("form-message")?.value.trim() || "";
+
+    if (!name || !contactInfo || !message) {
+      showToast("Please fill in all fields");
+      return;
+    }
+
+    // Compose prefilled telegram or mailto message
+    const formattedMsg = `Hi Tegegn, my name is ${name} (${contactInfo}).\n\n${message}`;
+    const telegramUrl = `https://t.me/tegegndev?text=${encodeURIComponent(formattedMsg)}`;
+
+    showToast("Opening Telegram to send your message...");
+    window.open(telegramUrl, "_blank", "noopener,noreferrer");
+
+    form.reset();
+  });
+};
+
 const initApp = () => {
   initThemeToggle();
   dismissPreloader();
+  initTypingEffect();
+  initLanguageProgressBars();
+  initScrollReveal();
+  initMetricsCounter();
+  init3DTilt();
+  initLightbox();
+  initQuickContactForm();
   initProjectFilters();
   initCopyButtons();
   initScrollEnhancements();
@@ -254,6 +586,8 @@ if (document.readyState === "loading") {
 } else {
   initApp();
 }
+
+
 
 
 
