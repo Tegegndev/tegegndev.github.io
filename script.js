@@ -264,7 +264,7 @@ const initScrollEnhancements = () => {
 
 const initCardSpotlightGlow = () => {
   const spotlightCards = document.querySelectorAll(
-    ".project-card, .cert-card, .focus-card, .seo-page-card, .skill-logo-card, .tool-card, .timeline-content"
+    ".project-card, .cert-card, .focus-card, .skill-logo-card, .tool-card, .timeline-content"
   );
 
   spotlightCards.forEach((card) => {
@@ -370,7 +370,7 @@ const initScrollReveal = () => {
   // Assign contextual animation styles
   document.querySelectorAll(".timeline-item").forEach((el) => el.classList.add("reveal-slide-right"));
   document
-    .querySelectorAll(".skill-logo-card, .tool-card, .contact-card, .metric-card, .seo-page-card")
+    .querySelectorAll(".skill-logo-card, .tool-card, .contact-card, .metric-card")
     .forEach((el) => el.classList.add("reveal-scale"));
   document
     .querySelectorAll(".section, .focus-card, .language-card, .project-card, .cert-card, .faq-item, .quick-message-box")

@@ -985,53 +985,7 @@ body.is-loading {
   margin: 0;
 }
 
-/* SEO Page Cards */
-.seo-page-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
-}
 
-.seo-page-card {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  background: var(--card-bg);
-  padding: 18px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.seo-page-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary-color);
-  box-shadow: 0 10px 24px rgba(141, 99, 77, 0.16);
-}
-
-.seo-page-card h3 {
-  margin-bottom: 8px;
-}
-
-.seo-page-card a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.seo-page-card a:hover {
-  color: var(--secondary-color);
-  transform: translateX(3px);
-}
-
-.seo-page-card p {
-  color: var(--text-body);
-  font-size: 14px;
-  margin: 0;
-}
 
 /* ==========================================================================
    Languages Section & Ability Bars
@@ -1653,16 +1607,14 @@ body.is-loading {
 
 .project-card,
 .cert-card,
-.focus-card,
-.seo-page-card {
+.focus-card {
   position: relative;
   overflow: hidden;
 }
 
 .project-card::before,
 .cert-card::before,
-.focus-card::before,
-.seo-page-card::before {
+.focus-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1680,15 +1632,13 @@ body.is-loading {
 
 .project-card:hover::before,
 .cert-card:hover::before,
-.focus-card:hover::before,
-.seo-page-card:hover::before {
+.focus-card:hover::before {
   opacity: 1;
 }
 
 [data-theme="dark"] .project-card::before,
 [data-theme="dark"] .cert-card::before,
-[data-theme="dark"] .focus-card::before,
-[data-theme="dark"] .seo-page-card::before {
+[data-theme="dark"] .focus-card::before {
   background: radial-gradient(
     450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     rgba(56, 189, 248, 0.16),
@@ -2701,7 +2651,6 @@ footer {
 /* Cards and Panels */
 [data-theme="dark"] .focus-card,
 [data-theme="dark"] .language-card,
-[data-theme="dark"] .seo-page-card,
 [data-theme="dark"] .cert-card,
 [data-theme="dark"] .education-card,
 [data-theme="dark"] .faq-item,
