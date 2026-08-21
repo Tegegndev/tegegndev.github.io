@@ -2618,36 +2618,77 @@ footer {
 }
 
 /* ==========================================================================
-   Custom Fluid Interactive Cursor
+   Creative Circle Cursor System
    ========================================================================== */
 
-/* Hide default cursor on desktop so the custom glowing cursor takes over */
-@media (pointer: fine) {
-  body,
-  a,
-  button,
-  summary,
-  .nav-cv-btn,
-  .theme-toggle,
-  .nav-toggle,
-  .filter-btn,
-  .copy-btn,
-  .form-submit-btn,
-  .back-to-top,
-  .project-card,
-  .cert-card,
-  .focus-card,
-  .skill-logo-card,
-  .tool-card,
-  .contact-card,
-  .contact-card-link,
-  .hero-links a,
-  .cta-primary,
-  .cta-secondary {
-    cursor: none !important;
-  }
+/* Native Creative SVG Circle Pointer (Works universally across all browsers) */
+html,
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8.5' stroke='%238d634d' stroke-width='1.75' fill='%238d634d' fill-opacity='0.15'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%238d634d'/%3E%3C/svg%3E") 12 12, auto;
 }
 
+/* Hovering over clickable & interactive elements */
+a,
+button,
+summary,
+input,
+textarea,
+select,
+[role="button"],
+.nav-cv-btn,
+.theme-toggle,
+.nav-toggle,
+.filter-btn,
+.copy-btn,
+.form-submit-btn,
+.back-to-top,
+.project-card,
+.cert-card,
+.focus-card,
+.skill-logo-card,
+.tool-card,
+.contact-card,
+.contact-card-link,
+.hero-links a,
+.cta-primary,
+.cta-secondary {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' stroke='%232e6f78' stroke-width='2' stroke-dasharray='3 2' fill='%232e6f78' fill-opacity='0.25'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%232e6f78'/%3E%3C/svg%3E") 16 16, pointer !important;
+}
+
+/* Dark Mode Creative Circle Cursor */
+[data-theme="dark"],
+[data-theme="dark"] body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8.5' stroke='%23c99877' stroke-width='1.75' fill='%23c99877' fill-opacity='0.2'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23c99877'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] button,
+[data-theme="dark"] summary,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] [role="button"],
+[data-theme="dark"] .nav-cv-btn,
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .nav-toggle,
+[data-theme="dark"] .filter-btn,
+[data-theme="dark"] .copy-btn,
+[data-theme="dark"] .form-submit-btn,
+[data-theme="dark"] .back-to-top,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .cert-card,
+[data-theme="dark"] .focus-card,
+[data-theme="dark"] .skill-logo-card,
+[data-theme="dark"] .tool-card,
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .contact-card-link,
+[data-theme="dark"] .hero-links a,
+[data-theme="dark"] .cta-primary,
+[data-theme="dark"] .cta-secondary {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' stroke='%2338bdf8' stroke-width='2' stroke-dasharray='3 2' fill='%2338bdf8' fill-opacity='0.3'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%2338bdf8'/%3E%3C/svg%3E") 16 16, pointer !important;
+}
+
+/* Ambient Floating Luminous Circle Follower */
 .custom-cursor-dot,
 .custom-cursor-ring {
   position: fixed;
@@ -2655,31 +2696,31 @@ footer {
   left: 0;
   border-radius: 50%;
   pointer-events: none !important;
-  z-index: 2147483647;
+  z-index: 99998;
   opacity: 0;
   will-change: transform, opacity;
   transition: opacity 0.3s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .custom-cursor-dot {
-  width: 9px;
-  height: 9px;
+  width: 6px;
+  height: 6px;
   background-color: var(--primary-color);
-  margin-top: -4.5px;
-  margin-left: -4.5px;
-  box-shadow: 0 0 12px rgba(141, 99, 77, 0.55);
+  margin-top: -3px;
+  margin-left: -3px;
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
 .custom-cursor-ring {
-  width: 38px;
-  height: 38px;
-  border: 2px solid var(--primary-color);
-  background-color: rgba(141, 99, 77, 0.05);
-  margin-top: -19px;
-  margin-left: -19px;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--primary-color);
+  background: radial-gradient(circle, rgba(141, 99, 77, 0.12) 0%, transparent 70%);
+  margin-top: -22px;
+  margin-left: -22px;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s ease,
-              background-color 0.25s ease,
+              background 0.25s ease,
               opacity 0.3s ease;
 }
 
@@ -2688,50 +2729,28 @@ footer {
   opacity: 1;
 }
 
-/* Hovering over links / buttons / cards */
 .custom-cursor-ring.cursor-hover {
-  transform: scale(1.8);
+  transform: scale(1.6);
   border-color: var(--secondary-color);
-  background-color: rgba(46, 111, 120, 0.2);
+  background: radial-gradient(circle, rgba(46, 111, 120, 0.25) 0%, transparent 75%);
 }
 
-.custom-cursor-dot.cursor-hover {
-  transform: scale(0.5);
-  background-color: var(--secondary-color);
-}
-
-/* Clicking / Mouse down state */
 .custom-cursor-ring.cursor-click {
   transform: scale(0.85);
   border-color: var(--primary-color);
-  background-color: rgba(141, 99, 77, 0.3);
-}
-
-.custom-cursor-dot.cursor-click {
-  transform: scale(1.4);
-}
-
-/* Dark Mode Cursor */
-[data-theme="dark"] .custom-cursor-dot {
-  background-color: var(--primary-color);
-  box-shadow: 0 0 14px rgba(201, 152, 119, 0.7);
+  background: radial-gradient(circle, rgba(141, 99, 77, 0.35) 0%, transparent 75%);
 }
 
 [data-theme="dark"] .custom-cursor-ring {
   border-color: var(--primary-color);
-  background-color: rgba(201, 152, 119, 0.08);
+  background: radial-gradient(circle, rgba(201, 152, 119, 0.16) 0%, transparent 70%);
 }
 
 [data-theme="dark"] .custom-cursor-ring.cursor-hover {
   border-color: var(--secondary-color);
-  background-color: rgba(56, 189, 248, 0.22);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, transparent 75%);
 }
 
-[data-theme="dark"] .custom-cursor-dot.cursor-hover {
-  background-color: var(--secondary-color);
-}
-
-/* Disable on touch devices */
 @media (pointer: coarse) {
   .custom-cursor-dot,
   .custom-cursor-ring {
