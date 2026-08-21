@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="minGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8D634D"/>
+      <stop offset="50%" stop-color="#C99877"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Minimalist Monogram: T and W merged into geometric code badge -->
+  <!-- Outer Code Container -->
+  <rect x="32" y="32" width="448" height="448" rx="88" fill="none" stroke="url(#minGrad)" stroke-width="24"/>
+  
+  <!-- "T" Cross and Stem -->
+  <path d="M 128 168 L 384 168" fill="none" stroke="url(#minGrad)" stroke-width="28" stroke-linecap="round"/>
+  <path d="M 256 168 L 256 300" fill="none" stroke="url(#minGrad)" stroke-width="28" stroke-linecap="round"/>
+
+  <!-- "W" Base Geometry -->
+  <path d="M 160 256 L 208 384 L 256 320 L 304 384 L 352 256" fill="none" stroke="#6D7D63" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

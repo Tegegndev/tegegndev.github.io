@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bracketL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D7D63"/>
+      <stop offset="100%" stop-color="#95A688"/>
+    </linearGradient>
+    <linearGradient id="twLetters" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8D634D"/>
+      <stop offset="50%" stop-color="#C99877"/>
+      <stop offset="100%" stop-color="#E2B18E"/>
+    </linearGradient>
+    <linearGradient id="slashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <filter id="cleanShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cleanShadow)">
+    <!-- Terminal Background Squircle -->
+    <rect x="36" y="36" width="440" height="440" rx="96" fill="#181412" stroke="#332822" stroke-width="3"/>
+
+    <!-- Terminal Window Dots -->
+    <circle cx="84" cy="80" r="7" fill="#EF4444" opacity="0.8"/>
+    <circle cx="108" cy="80" r="7" fill="#F59E0B" opacity="0.8"/>
+    <circle cx="132" cy="80" r="7" fill="#10B981" opacity="0.8"/>
+
+    <!-- Left Bracket < -->
+    <path d="M 140 200 L 96 260 L 140 320"
+          fill="none"
+          stroke="url(#bracketL)"
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Letter "T" -->
+    <path d="M 172 208 L 244 208 M 208 208 L 208 316"
+          fill="none"
+          stroke="url(#twLetters)"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Letter "W" -->
+    <path d="M 252 208 L 268 316 L 292 250 L 316 316 L 332 208"
+          fill="none"
+          stroke="url(#twLetters)"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Closing Slash / -->
+    <path d="M 374 196 L 344 324"
+          fill="none"
+          stroke="url(#slashGrad)"
+          stroke-width="16"
+          stroke-linecap="round"/>
+
+    <!-- Right Bracket > -->
+    <path d="M 372 200 L 416 260 L 372 320"
+          fill="none"
+          stroke="url(#bracketL)"
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Ethiopian Tech Pulse Node -->
+    <circle cx="256" cy="386" r="6" fill="#F59E0B"/>
+    <text x="256" y="420" font-family="'Inter', sans-serif" font-size="16" font-weight="700" letter-spacing="6" fill="#8D634D" text-anchor="middle">TEGEGN.DEV</text>
+  </g>
+</svg>

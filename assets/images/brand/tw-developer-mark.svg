@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Ambient Glow -->
+    <radialGradient id="twGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8D634D" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#C99877" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#161311" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Warm Terracotta & Ochre Gradient -->
+    <linearGradient id="twPrimaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8D634D"/>
+      <stop offset="50%" stop-color="#C99877"/>
+      <stop offset="100%" stop-color="#E2B18E"/>
+    </linearGradient>
+
+    <!-- Ethiopian Emerald to Gold Accent -->
+    <linearGradient id="twAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+
+    <!-- Sage to Emerald Gradient -->
+    <linearGradient id="twSageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D7D63"/>
+      <stop offset="100%" stop-color="#95A688"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="twShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Backdrop -->
+  <circle cx="256" cy="256" r="230" fill="url(#twGlow)"/>
+
+  <g filter="url(#twShadow)">
+    <!-- Outer Developer Hexagonal / Terminal Badge Frame -->
+    <path d="M 256 36 L 440 142 L 440 370 L 256 476 L 72 370 L 72 142 Z"
+          fill="#1E1916"
+          stroke="url(#twPrimaryGrad)"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Inner Subtle Grid -->
+    <path d="M 72 142 L 256 248 L 440 142 M 256 248 L 256 476"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-opacity="0.04"
+          stroke-width="2"/>
+
+    <!-- Left Code Bracket < -->
+    <path d="M 148 214 L 112 256 L 148 298"
+          fill="none"
+          stroke="#6D7D63"
+          stroke-width="12"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Right Code Bracket / Slash > -->
+    <path d="M 364 214 L 400 256 L 364 298"
+          fill="none"
+          stroke="#8D634D"
+          stroke-width="12"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- MONOGRAM: T + W Intertwined Developer Geometry -->
+    <!-- The "T" Crossbar & Stem -->
+    <g fill="url(#twPrimaryGrad)">
+      <!-- Top Bar of T -->
+      <rect x="180" y="160" width="152" height="18" rx="9"/>
+      <!-- Vertical Stem of T -->
+      <rect x="247" y="160" width="18" height="105" rx="9"/>
+    </g>
+
+    <!-- The "W" Interlocking Dynamic Wings -->
+    <!-- Left Wing of W -->
+    <path d="M 188 238 L 216 338 L 256 280 L 296 338 L 324 238"
+          fill="none"
+          stroke="url(#twAccentGrad)"
+          stroke-width="16"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Terminal Prompt Node / Radar Dot (Wolaita Sodo, Ethiopia Dev Node) -->
+    <circle cx="256" cy="358" r="8" fill="#F59E0B"/>
+    <circle cx="256" cy="358" r="15" fill="none" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="2"/>
+  </g>
+</svg>

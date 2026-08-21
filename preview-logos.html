@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Showcase | Developer Tegegn Wukianos</title>
+  <link href="assets/fonts/google/fonts.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8d634d;
+      --primary-soft: #c99877;
+      --secondary: #6d7d63;
+      --page-bg: #161311;
+      --card-bg: #221c18;
+      --card-border: #382c24;
+      --text: #fcf8f2;
+      --text-muted: #a39285;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--primary-soft);
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(141, 99, 77, 0.2);
+      border: 1px solid var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--primary-soft);
+      margin-bottom: 16px;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-soft);
+    }
+    .card-preview {
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      position: relative;
+    }
+    .preview-dark {
+      background: radial-gradient(circle at center, #251e1a 0%, #161311 100%);
+    }
+    .preview-light {
+      background: radial-gradient(circle at center, #ffffff 0%, #ebe8e1 100%);
+    }
+    .card-preview img, .card-preview svg {
+      max-width: 100%;
+      max-height: 180px;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+    }
+    .card-body {
+      padding: 24px;
+      border-top: 1px solid var(--card-border);
+      flex: 1;
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-soft);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: var(--primary-soft);
+    }
+    .full-width-card {
+      grid-column: 1 / -1;
+    }
+    .favicons-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .fav-item {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .fav-item img {
+      display: block;
+      margin: 0 auto 8px;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="badge">&lt; BRAND IDENTITY /&gt;</span>
+    <h1>Developer Tegegn Wukianos</h1>
+    <p class="lead">Official custom-crafted logos, monograms, vector SVGs, and high-resolution Pillow-rendered PNG assets.</p>
+  </header>
+
+  <div class="grid">
+    <!-- Card 1: Horizontal Light Header Lockup -->
+    <div class="card">
+      <div class="card-preview preview-light">
+        <img src="assets/images/brand/tegegn-wukianos-horizontal.svg" alt="Tegegn Wukianos Horizontal Light Logo">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">1. Main Brand Lockup (Light Mode)</h3>
+        <p class="card-desc">Ideal for the website navbar, resume header, documentation, and light backgrounds.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tegegn-wukianos-horizontal.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Horizontal Dark Header Lockup -->
+    <div class="card">
+      <div class="card-preview preview-dark">
+        <img src="assets/images/brand/tegegn-wukianos-dark-horizontal.svg" alt="Tegegn Wukianos Horizontal Dark Logo">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">2. Main Brand Lockup (Dark Mode)</h3>
+        <p class="card-desc">Specially formatted for dark theme headers, GitHub profile banners, and obsidian backgrounds.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tegegn-wukianos-dark-horizontal.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Developer Hex Mark -->
+    <div class="card">
+      <div class="card-preview preview-dark">
+        <img src="assets/images/brand/tw-developer-mark.svg" alt="TW Developer Hex Mark" style="max-height: 160px;">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">3. &lt;TW/&gt; Hexagonal Tech Mark</h3>
+        <p class="card-desc">A sharp geometric monogram uniting T and W inside code brackets with Ethiopian gradient accents.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tw-developer-mark.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+          <a href="assets/images/brand/tegegn-wukianos-mark.png" target="_blank" class="btn btn-outline">View 512px PNG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Terminal Code Brackets -->
+    <div class="card">
+      <div class="card-preview preview-dark">
+        <img src="assets/images/brand/tw-code-brackets.svg" alt="TW Code Terminal Mark" style="max-height: 160px;">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">4. Terminal Window &lt;TW/&gt; Badge</h3>
+        <p class="card-desc">Classic terminal window theme with OS traffic lights, bold monospaced code brackets, and TEGEGN.DEV label.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tw-code-brackets.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: App Icon / Profile Squircle -->
+    <div class="card">
+      <div class="card-preview preview-dark">
+        <img src="assets/images/brand/tw-avatar-badge.svg" alt="TW Avatar Badge" style="max-height: 160px;">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">5. Squircle Profile & App Icon</h3>
+        <p class="card-desc">Perfect 512x512 squircle avatar for GitHub, Telegram, Twitter, LinkedIn, and mobile app icons.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tw-avatar-badge.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+          <a href="assets/images/brand/tegegn-wukianos-avatar.png" target="_blank" class="btn btn-outline">View PNG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6: Minimalist Monogram -->
+    <div class="card">
+      <div class="card-preview preview-light">
+        <img src="assets/images/brand/tw-monogram-minimal.svg" alt="TW Minimal Monogram" style="max-height: 160px;">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">6. Clean Minimalist Monogram</h3>
+        <p class="card-desc">Ultra lightweight vector line-art monogram suited for small stamps, favicons, or watermarks.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tw-monogram-minimal.svg" target="_blank" class="btn btn-primary">Open SVG</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Width Card: Social Banner -->
+    <div class="card full-width-card">
+      <div class="card-preview preview-dark" style="padding: 20px;">
+        <img src="assets/images/brand/tegegn-wukianos-social-banner.png" alt="Tegegn Wukianos Social Banner" style="max-height: 260px; border-radius: 10px;">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">7. OpenGraph / Twitter Social Banner (1200 x 630)</h3>
+        <p class="card-desc">High-resolution social preview image for link sharing on LinkedIn, Twitter, Telegram, and Facebook.</p>
+        <div class="btn-row">
+          <a href="assets/images/brand/tegegn-wukianos-social-banner.png" target="_blank" class="btn btn-primary">Open High-Res Banner</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Width Card: Favicon Suite -->
+    <div class="card full-width-card">
+      <div class="card-preview preview-dark">
+        <div class="favicons-row">
+          <div class="fav-item">
+            <img src="assets/images/brand/favicon-64x64.png" width="64" height="64" alt="64px">
+            <span>64x64</span>
+          </div>
+          <div class="fav-item">
+            <img src="assets/images/brand/favicon-48x48.png" width="48" height="48" alt="48px">
+            <span>48x48</span>
+          </div>
+          <div class="fav-item">
+            <img src="assets/images/brand/favicon-32x32.png" width="32" height="32" alt="32px">
+            <span>32x32</span>
+          </div>
+          <div class="fav-item">
+            <img src="assets/images/brand/favicon-16x16.png" width="16" height="16" alt="16px">
+            <span>16x16</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">8. Multi-Resolution Favicon Suite (Pillow Generated)</h3>
+        <p class="card-desc">Crisp antialiased favicons for browser tabs, mobile bookmarks, and PWA manifests.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
