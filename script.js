@@ -599,9 +599,98 @@ const initQuickContactForm = () => {
   });
 };
 
+const initCustomCursor = () => {
+  const dot = document.getElementById("cursor-dot");
+  const ring = document.getElementById("cursor-ring");
+  if (!dot || !ring) return;
+
+  // Check if touch device or reduced motion is preferred
+  if (
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let ringX = -100;
+  let ringY = -100;
+  let isVisible = false;
+
+  const onMouseMove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+    if (!isVisible) {
+      dot.classList.add("active");
+      ring.classList.add("active");
+      isVisible = true;
+    }
+  };
+
+  const renderRing = () => {
+    // Smooth lerp follow physics
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+    requestAnimationFrame(renderRing);
+  };
+
+  requestAnimationFrame(renderRing);
+
+  window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+  document.addEventListener("mouseleave", () => {
+    dot.classList.remove("active");
+    ring.classList.remove("active");
+    isVisible = false;
+  });
+
+  document.addEventListener("mouseenter", () => {
+    if (mouseX > 0 && mouseY > 0) {
+      dot.classList.add("active");
+      ring.classList.add("active");
+      isVisible = true;
+    }
+  });
+
+  document.addEventListener("mousedown", () => {
+    ring.classList.add("cursor-click");
+    dot.classList.add("cursor-click");
+  });
+
+  document.addEventListener("mouseup", () => {
+    ring.classList.remove("cursor-click");
+    dot.classList.remove("cursor-click");
+  });
+
+  // Dynamic hover reaction on interactive elements
+  const interactiveSelectors =
+    "a, button, input, textarea, select, .project-card, .cert-card, .skill-logo-card, .tool-card, .contact-card, .faq-item summary, .filter-btn, .theme-toggle";
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      ring.classList.add("cursor-hover");
+      dot.classList.add("cursor-hover");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      ring.classList.remove("cursor-hover");
+      dot.classList.remove("cursor-hover");
+    }
+  });
+};
+
 const initApp = () => {
   initThemeToggle();
   dismissPreloader();
+  initCustomCursor();
   initTypingEffect();
   initLanguageProgressBars();
   initScrollReveal();

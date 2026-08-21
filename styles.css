@@ -2618,6 +2618,101 @@ footer {
 }
 
 /* ==========================================================================
+   Custom Fluid Interactive Cursor
+   ========================================================================== */
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  margin-top: -4px;
+  margin-left: -4px;
+  box-shadow: 0 0 10px rgba(141, 99, 77, 0.4);
+}
+
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--primary-color);
+  background-color: rgba(141, 99, 77, 0.04);
+  margin-top: -18px;
+  margin-left: -18px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              opacity 0.3s ease;
+}
+
+.custom-cursor-dot.active,
+.custom-cursor-ring.active {
+  opacity: 1;
+}
+
+/* Hovering over links / buttons / cards */
+.custom-cursor-ring.cursor-hover {
+  transform: scale(1.65);
+  border-color: var(--secondary-color);
+  background-color: rgba(46, 111, 120, 0.15);
+}
+
+.custom-cursor-dot.cursor-hover {
+  transform: scale(0.55);
+  background-color: var(--secondary-color);
+}
+
+/* Clicking / Mouse down state */
+.custom-cursor-ring.cursor-click {
+  transform: scale(0.85);
+  border-color: var(--primary-color);
+  background-color: rgba(141, 99, 77, 0.25);
+}
+
+.custom-cursor-dot.cursor-click {
+  transform: scale(1.35);
+}
+
+/* Dark Mode Cursor */
+[data-theme="dark"] .custom-cursor-dot {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 12px rgba(201, 152, 119, 0.6);
+}
+
+[data-theme="dark"] .custom-cursor-ring {
+  border-color: var(--primary-color);
+  background-color: rgba(201, 152, 119, 0.06);
+}
+
+[data-theme="dark"] .custom-cursor-ring.cursor-hover {
+  border-color: var(--secondary-color);
+  background-color: rgba(56, 189, 248, 0.18);
+}
+
+[data-theme="dark"] .custom-cursor-dot.cursor-hover {
+  background-color: var(--secondary-color);
+}
+
+/* Disable on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
    Reduced Motion Accessibility
    ========================================================================== */
 
@@ -2631,14 +2726,23 @@ footer {
     scroll-behavior: auto !important;
   }
 
-  .reveal-item {
+  .reveal-item,
+  .reveal-flow-up,
+  .reveal-scale,
+  .reveal-slide-right {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
   }
 
   .ability-bar {
     width: var(--progress-pct, 0%) !important;
     transition: none !important;
+  }
+
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
   }
 }
