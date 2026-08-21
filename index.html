@@ -32,6 +32,15 @@
   <link href="assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/fonts/google/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
   <meta name="google-site-verification" content="xDHHT0oMM1M4pCB9TBGngvW10aUbyCyq4-T_Za668hI" />
   <script type="application/ld+json">
     {
@@ -132,9 +141,14 @@
       <a href="#home" class="logo" aria-label="Tegegn Wukianos home">
         <img src="assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo" class="logo-icon">
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <i class='bx bx-menu'></i>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class='bx bx-menu'></i>
+        </button>
+      </div>
       <div class="nav-row" id="nav-menu">
         <div class="nav-links">
           <ul>

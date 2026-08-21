@@ -27,6 +27,15 @@
   <link href="assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/fonts/google/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,6 +63,11 @@
       <a href="index.html" class="logo" aria-label="Tegegn Wukianos home">
         <img src="assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo" class="logo-icon">
       </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
       <div class="nav-row">
         <div class="nav-links">
           <ul>
@@ -71,22 +85,12 @@
     </div>
   </nav>
 
-  <main class="article-page">
-    <section class="section article-hero">
-      <p class="article-breadcrumb"><a href="index.html">Home</a> / Backend Developer Ethiopia</p>
-      <h1>Backend Developer Ethiopia</h1>
-      <p class="article-lead">I build backend systems in Ethiopia using Python and JavaScript, with a focus on APIs, automation, scraping, and database-backed applications.</p>
-      <div class="article-actions">
-        <a href="index.html#projects" class="nav-cv-btn">View Backend Projects</a>
-        <a href="index.html#contact" class="article-secondary-link">Contact Me</a>
-      </div>
-    </section>
-
-    <section class="section article-content">
-      <h2>Backend Development Focus</h2>
-      <p>My backend work includes REST APIs, data processing, automation scripts, scraping systems, and tools that connect interfaces with real data and business logic. I use Python frameworks such as Flask, FastAPI, and Django, along with JavaScript tools such as Node.js and Express.js.</p>
-      <p>I also work with databases and supporting development tools including PostgreSQL, Supabase, Git, Docker, Postman, Selenium, and Playwright.</p>
-    </section>
+  <main class="page-container article-page">
+    <header class="article-hero">
+      <p class="eyebrow">Backend Development Focus</p>
+      <h1>Backend Developer in Ethiopia</h1>
+      <p class="article-lead">Building reliable server-side systems, API integrations, data scrapers, and automation workflows for real-world use.</p>
+    </header>
 
     <section class="section article-grid-section">
       <h2>Backend Strengths</h2>
@@ -115,5 +119,6 @@
   <footer>
     <p>&copy; 2026 Tegegn Wukianos. All rights reserved.</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -27,6 +27,15 @@
   <link href="assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/fonts/google/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,6 +80,11 @@
       <a href="index.html" class="logo" aria-label="Tegegn Wukianos home">
         <img src="assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo" class="logo-icon">
       </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
       <div class="nav-row">
         <div class="nav-links">
           <ul>
@@ -152,5 +166,6 @@
   <footer>
     <p>&copy; 2026 Tegegn Wukianos. All rights reserved.</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -192,7 +192,56 @@ const initMobileNav = () => {
   });
 };
 
+const initThemeToggle = () => {
+  const themeToggles = document.querySelectorAll(".theme-toggle");
+  const root = document.documentElement;
+
+  const getPreferredTheme = () => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  const applyTheme = (theme, showNotification = false) => {
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    themeToggles.forEach((btn) => {
+      const icon = btn.querySelector("i");
+      if (icon) {
+        icon.className = theme === "dark" ? "bx bx-sun" : "bx bx-moon";
+      }
+      const label = `Switch to ${theme === "dark" ? "light" : "dark"} mode`;
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("title", label);
+    });
+
+    if (showNotification) {
+      showToast(`${theme === "dark" ? "🌙 Dark" : "☀️ Light"} mode enabled`);
+    }
+  };
+
+  // Sync state on load
+  applyTheme(getPreferredTheme(), false);
+
+  themeToggles.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      applyTheme(next, true);
+    });
+  });
+
+  // Listen to OS theme changes if user hasn't explicitly overridden
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(e.matches ? "dark" : "light", false);
+    }
+  });
+};
+
 const initApp = () => {
+  initThemeToggle();
   dismissPreloader();
   initProjectFilters();
   initCopyButtons();
