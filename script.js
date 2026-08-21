@@ -154,10 +154,45 @@ const initScrollEnhancements = () => {
       }
     }
 
-    // Subtle smooth parallax on hero photo
-    if (heroPhoto && !prefersReducedMotion && scrollTop < 800) {
-      const parallaxY = (scrollTop * 0.08).toFixed(2);
-      heroPhoto.style.transform = `translateY(${parallaxY}px) scale(1.03)`;
+    // Pro Multi-Layer Parallax Depth on Hero
+    const heroBadge = document.querySelector(".hero-badge");
+    if (heroPhoto && !prefersReducedMotion && scrollTop < 900) {
+      const parallaxPhoto = (scrollTop * 0.1).toFixed(2);
+      const parallaxBadge = (scrollTop * 0.15).toFixed(2);
+      heroPhoto.style.transform = `translate3d(0, ${parallaxPhoto}px, 0) scale(1.02)`;
+      if (heroBadge) {
+        heroBadge.style.transform = `translate3d(0, -${parallaxBadge * 0.4}px, 0)`;
+      }
+    }
+
+    // Scroll-Driven Laser Progress for Timeline
+    const timeline = document.querySelector(".timeline");
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    if (timeline && timelineItems.length > 0) {
+      const rect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const start = windowHeight * 0.75;
+      const end = windowHeight * 0.25;
+
+      if (rect.top <= start && rect.bottom >= end) {
+        const totalHeight = rect.height;
+        const progressPx = Math.min(Math.max(0, start - rect.top), totalHeight);
+        const progressPercent = (progressPx / totalHeight) * 100;
+        timeline.style.setProperty("--timeline-progress", `${progressPercent.toFixed(1)}%`);
+      } else if (rect.top > start) {
+        timeline.style.setProperty("--timeline-progress", "0%");
+      } else if (rect.bottom < end) {
+        timeline.style.setProperty("--timeline-progress", "100%");
+      }
+
+      timelineItems.forEach((item) => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top <= windowHeight * 0.68) {
+          item.classList.add("is-active");
+        } else {
+          item.classList.remove("is-active");
+        }
+      });
     }
 
     // Active link highlighting
@@ -225,6 +260,26 @@ const initScrollEnhancements = () => {
       });
     });
   }
+};
+
+const initCardSpotlightGlow = () => {
+  const spotlightCards = document.querySelectorAll(
+    ".project-card, .cert-card, .focus-card, .seo-page-card, .skill-logo-card, .tool-card, .timeline-content"
+  );
+
+  spotlightCards.forEach((card) => {
+    card.addEventListener(
+      "mousemove",
+      (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      },
+      { passive: true }
+    );
+  });
 };
 
 const initMobileNav = () => {
@@ -733,6 +788,7 @@ const initApp = () => {
   initScrollReveal();
   initMetricsCounter();
   init3DTilt();
+  initCardSpotlightGlow();
   initLightbox();
   initQuickContactForm();
   initProjectFilters();
