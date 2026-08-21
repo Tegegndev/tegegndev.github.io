@@ -336,7 +336,7 @@ const initScrollReveal = () => {
     const children = parent.querySelectorAll(":scope > .reveal-item, :scope > .reveal-scale, :scope > .reveal-slide-right");
     if (children.length > 1) {
       children.forEach((child, idx) => {
-        const delay = Math.min((idx % 8) * 0.065, 0.45);
+        const delay = Math.min((idx % 12) * 0.075, 0.55);
         child.style.setProperty("--reveal-delay", `${delay}s`);
       });
     }
@@ -352,8 +352,8 @@ const initScrollReveal = () => {
       });
     },
     {
-      rootMargin: "0px 0px -35px 0px",
-      threshold: 0.06
+      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.05
     }
   );
 
