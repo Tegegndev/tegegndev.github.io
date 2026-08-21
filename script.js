@@ -687,11 +687,48 @@ const initCustomCursor = () => {
   });
 };
 
+const initSkillsUnlock = () => {
+  const unlockBtn = document.getElementById("unlock-skills-btn");
+  const overlay = document.getElementById("skills-unlock-overlay");
+  const lockedGrid = document.getElementById("locked-skills-grid");
+  const statusBadge = document.getElementById("skills-status-badge");
+  const lockIcon = document.getElementById("lock-icon-el");
+
+  if (!unlockBtn || !overlay || !lockedGrid) return;
+
+  unlockBtn.addEventListener("click", () => {
+    // 1. Morph lock icon to unlocked
+    if (lockIcon) {
+      lockIcon.className = "bx bxs-lock-open-alt";
+    }
+
+    // 2. Play unlock animation
+    unlockBtn.innerHTML = "<i class='bx bx-check-circle'></i> Superpowers Unlocked!";
+    unlockBtn.style.background = "linear-gradient(135deg, #2e6f78 0%, #38bdf8 100%)";
+
+    setTimeout(() => {
+      // 3. Smoothly fade out overlay and unblur skills
+      overlay.classList.add("unlocked");
+      lockedGrid.classList.add("unlocked");
+
+      // 4. Update status badge
+      if (statusBadge) {
+        statusBadge.classList.add("unlocked");
+        statusBadge.innerHTML = "<i class='bx bxs-zap'></i> Full Potential Active (16+ Skills)";
+      }
+
+      // 5. Celebration toast
+      showToast("🎉 Full potential unlocked! Let's build your next project together.");
+    }, 350);
+  });
+};
+
 const initApp = () => {
   initThemeToggle();
   dismissPreloader();
   initCustomCursor();
   initTypingEffect();
+  initSkillsUnlock();
   initLanguageProgressBars();
   initScrollReveal();
   initMetricsCounter();

@@ -341,7 +341,12 @@
 
   
   <section class="section" id="skills">
-    <h2>Ski<span>lls</span></h2>
+    <div class="skills-header-row">
+      <h2>Ski<span>lls</span></h2>
+      <span class="skills-counter-badge" id="skills-status-badge"><i class='bx bx-shield-quarter'></i> Core Stack Active</span>
+    </div>
+    
+    <!-- Primary Visible Skills -->
     <div class="skill-logo-grid">
       <div class="skill-logo-card">
         <img src="assets/icons/logos/python.png" alt="Python logo" loading="lazy" decoding="async">
@@ -363,64 +368,73 @@
         <img src="assets/icons/logos/cpp.png" alt="C plus plus logo" loading="lazy" decoding="async">
         <span>C++</span>
       </div>
-
       <div class="skill-logo-card">
         <img src="assets/icons/logos/react.png" alt="React logo" loading="lazy" decoding="async">
         <span>React</span>
       </div>
-
       <div class="skill-logo-card">
         <img src="assets/icons/logos/flask.png" alt="Flask logo" loading="lazy" decoding="async">
         <span>Flask</span>
       </div>
-
-
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/flutter.png" alt="Flutter logo" loading="lazy" decoding="async">
-        <span>Flutter</span>
-      </div>
-
       <div class="skill-logo-card">
         <img src="assets/icons/logos/nodejs.png" alt="Node.js logo" loading="lazy" decoding="async">
         <span>Node.js</span>
       </div>
+    </div>
 
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/sql.png" alt="SQL logo" loading="lazy" decoding="async">
-        <span>SQL</span>
-      </div>
-
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/nextjs.png" alt="Next.js logo" loading="lazy" decoding="async">
-        <span>Next.js</span>
-
-      </div>
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/express.png" alt="Express.js logo" loading="lazy" decoding="async">
-        <span>Express.js</span> 
-        </div>
-
-
-      <div class="skill-logo-card">
+    <!-- Mysterious / Locked Skills Wrapper -->
+    <div class="skills-unlock-wrapper" id="skills-unlock-wrapper">
+      <div class="skill-logo-grid locked-grid" id="locked-skills-grid">
+        <div class="skill-logo-card">
           <img src="assets/icons/logos/FastAPI.svg" alt="FastAPI logo" loading="lazy" decoding="async"> 
           <span>FastAPI</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/django.png" alt="Django logo" loading="lazy" decoding="async">
+          <span>Django</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/nextjs.png" alt="Next.js logo" loading="lazy" decoding="async">
+          <span>Next.js</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/express.png" alt="Express.js logo" loading="lazy" decoding="async">
+          <span>Express.js</span> 
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/supabase.png" alt="Supabase logo" loading="lazy" decoding="async">
+          <span>Supabase</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/postgress.png" alt="PostgreSQL logo" loading="lazy" decoding="async">
+          <span>PostgreSQL</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/sql.png" alt="SQL logo" loading="lazy" decoding="async">
+          <span>SQL</span>
+        </div>
+        <div class="skill-logo-card">
+          <img src="assets/icons/logos/flutter.png" alt="Flutter logo" loading="lazy" decoding="async">
+          <span>Flutter</span>
+        </div>
       </div>
 
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/django.png" alt="Django logo" loading="lazy" decoding="async">
-        <span>Django</span>
+      <!-- Unlock Overlay Banner -->
+      <div class="skills-unlock-overlay" id="skills-unlock-overlay">
+        <div class="unlock-card">
+          <div class="unlock-icon-pulse">
+            <i class='bx bxs-lock-alt' id="lock-icon-el"></i>
+          </div>
+          <h3>Want to see my full potential?</h3>
+         
+          <div class="unlock-actions">
+            <button type="button" class="unlock-btn" id="unlock-skills-btn">
+              <i class='bx bx-key'></i> Hire me to unlock my full potential
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div class="skill-logo-card">
-        <img src="assets/icons/logos/supabase.png" alt="Supabase logo" loading="lazy" decoding="async">
-        <span>Supabase</span>
-      </div>
-
-      <div class="skill-logo-card">
-      <img src="assets/icons/logos/postgress.png" alt="PostgreSQL logo" loading="lazy" decoding="async">
-      <span>PostgreSQL</span>
     </div>
-    
   </section>
 
 
