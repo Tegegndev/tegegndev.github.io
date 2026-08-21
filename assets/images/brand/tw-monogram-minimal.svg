@@ -16,5 +16,5 @@
   <path d="M 256 168 L 256 300" fill="none" stroke="url(#minGrad)" stroke-width="28" stroke-linecap="round"/>
 
   <!-- "W" Base Geometry -->
-  <path d="M 160 256 L 208 384 L 256 320 L 304 384 L 352 256" fill="none" stroke="#6D7D63" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 160 256 L 208 384 L 256 320 L 304 384 L 352 256" fill="none" stroke="#2E6F78" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

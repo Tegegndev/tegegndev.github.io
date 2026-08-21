@@ -11,7 +11,7 @@
     <linearGradient id="avatarBorder" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#8D634D"/>
       <stop offset="50%" stop-color="#C99877"/>
-      <stop offset="100%" stop-color="#6D7D63"/>
+      <stop offset="100%" stop-color="#2E6F78"/>
     </linearGradient>
 
     <!-- Glowing Accent -->
@@ -45,7 +45,7 @@
   <!-- Left Code Bracket -->
   <path d="M 130 216 L 90 256 L 130 296"
         fill="none"
-        stroke="#6D7D63"
+        stroke="#2E6F78"
         stroke-width="12"
         stroke-linecap="round"
         stroke-linejoin="round"/>

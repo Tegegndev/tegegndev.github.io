@@ -49,7 +49,7 @@
     <!-- Developer Sub-tagline -->
     <g transform="translate(162, 104)">
       <!-- Bracket & Slash motif -->
-      <text font-family="'JetBrains Mono', 'Fira Code', 'Inter', monospace" font-size="14" font-weight="700" letter-spacing="3" fill="#6D7D63">
+      <text font-family="'JetBrains Mono', 'Fira Code', 'Inter', monospace" font-size="14" font-weight="700" letter-spacing="3" fill="#2E6F78">
         &lt;<tspan fill="#C99877">ETHIOPIAN DEVELOPER</tspan> /&gt;
       </text>
     </g>
