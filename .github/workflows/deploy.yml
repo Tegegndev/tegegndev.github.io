@@ -18,7 +18,7 @@ jobs:
         with:
           server: ftp.tegegn.com.et
           username: github
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: Tegegn@demo
           protocol: ftps
           port: 21
           server-dir: ./
