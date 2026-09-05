@@ -1,0 +1,22 @@
+# Tegegn Wukianos — Ethiopian Developer & Portfolio
+
+> Tegegn Wukianos is an Ethiopian developer and IT student based in Wolaita Sodo, Ethiopia. He builds web applications, backend systems, and automation tools for local and global users, with experience in Python, JavaScript, C++, and modern web frameworks such as FastAPI, Django, Next.js, and React.
+
+## About
+
+Tegegn Wukianos is an Ethiopian developer and IT student at Wolaita Sodo University, based in Wolaita Sodo, Ethiopia. He focuses on building practical software: web applications, backend systems, automation scripts, and scraping tools, as well as student-focused products such as a dining app and a lost-and-found Telegram bot. His skill set spans Python, JavaScript, C++, Flutter, and frameworks including FastAPI, Django, Node.js, Express.js, and Next.js, with databases like PostgreSQL and Supabase. He holds certificates in Generative AI with AWS, AI Fundamentals from Udacity, web development from Muyalogy, and Local SEO from Skillshare. He has built projects including a voting management system in C++, a real-time Ethiopian forex currency monitor comparing bank rates, and Telegram bots for content downloading and campus lost-and-found. He works primarily in Amharic and English, reaching users across Ethiopia and beyond through open-source projects on GitHub.
+
+## Projects
+
+- [Tegegn Wukianos Portfolio](https://tegegn.com.et/): Personal portfolio and project showcase of Ethiopian developer Tegegn Wukianos.
+- [GitHub Profile](https://github.com/tegegndev): Open-source repositories including a C++ voting management system, a forex currency monitor, a WSU dining app, and Telegram automation bots.
+- [LinkedIn](https://linkedin.com/in/tegegndev): Professional profile with work history and certifications.
+- [Curriculum Vitae](https://tegegn.com.et/Tegegn_Wukainos_CV.pdf): Downloadable CV for Tegegn Wukianos.
+
+## Contact
+
+- Email: [tegegnw1997@gmail.com](mailto:tegegnw1997@gmail.com)
+- Phone: +251947347013
+- Telegram: [t.me/tegegndev](https://t.me/tegegndev)
+- LinkedIn: [linkedin.com/in/tegegndev](https://linkedin.com/in/tegegndev)
+- GitHub: [github.com/tegegndev](https://github.com/tegegndev)
