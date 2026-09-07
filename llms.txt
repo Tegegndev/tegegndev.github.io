@@ -11,7 +11,7 @@ Tegegn Wukianos is an Ethiopian developer and IT student at Wolaita Sodo Univers
 - [Tegegn Wukianos Portfolio](https://tegegn.com.et/): Personal portfolio and project showcase of Ethiopian developer Tegegn Wukianos.
 - [GitHub Profile](https://github.com/tegegndev): Open-source repositories including a C++ voting management system, a forex currency monitor, a WSU dining app, and Telegram automation bots.
 - [LinkedIn](https://linkedin.com/in/tegegndev): Professional profile with work history and certifications.
-- [Curriculum Vitae](https://tegegn.com.et/Tegegn_Wukainos_CV.pdf): Downloadable CV for Tegegn Wukianos.
+- [Curriculum Vitae](https://tegegn.com.et/assets/images/Tegegn_Wukainos_CV.pdf): Downloadable CV for Tegegn Wukianos.
 
 ## Contact
 
