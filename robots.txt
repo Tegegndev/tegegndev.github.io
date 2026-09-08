@@ -3,4 +3,18 @@ Allow: /
 Disallow: /privacy
 Disallow: /terms
 
+# Explicit AI Search and Crawler Management (GEO / AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://tegegn.com.et/sitemap.xml
+
