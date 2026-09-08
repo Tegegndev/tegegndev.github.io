@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSU Lost &amp; Found Telegram Bot Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Case study on creating a trilingual Telegram bot for Wolaita Sodo University to report, search, and reclaim lost campus items using Python, FSM, and Telegram Bot API.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/wsu-lost-and-found/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WSU Lost &amp; Found Telegram Bot | Technical Case Study">
+  <meta property="og:description" content="Technical case study detailing how a multilingual Telegram bot streamlined campus lost & found reporting at Wolaita Sodo University.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/wsu-lost-and-found/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/wsu_lost.webp">
+  <meta property="og:image:width" content="590">
+  <meta property="og:image:height" content="481">
+  <meta property="og:image:alt" content="WSU Lost and Found Telegram Bot preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WSU Lost &amp; Found Telegram Bot Case Study">
+  <meta name="twitter:description" content="How a trilingual Telegram bot solved campus lost and found tracking at Wolaita Sodo University.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/wsu_lost.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "WSU Lost & Found Bot",
+          "item": "https://tegegn.com.et/projects/wsu-lost-and-found/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "WSU Lost & Found Telegram Bot Case Study",
+      "description": "Technical case study detailing architecture, multilingual i18n, and conversational state machines for student lost item reporting.",
+      "url": "https://tegegn.com.et/projects/wsu-lost-and-found/",
+      "image": "https://tegegn.com.et/assets/images/projects/wsu_lost.webp",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Telegram Bot API",
+        "Python",
+        "Multilingual Software",
+        "Finite State Machines",
+        "University Software"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-wsulost",
+      "name": "WSU Lost & Found Telegram Bot",
+      "description": "Multilingual Telegram bot for the Wolaita Sodo University community to report lost items and connect with finders.",
+      "applicationCategory": "CommunicationApplication",
+      "operatingSystem": "Telegram",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "codeRepository": "https://github.com/tegegndev/wsulostandfound"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">WSU Lost &amp; Found Bot</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">TELEGRAM BOT &bull; I18N &bull; CAMPUS TOOLING</p>
+      <h1 class="cs-title">WSU Lost &amp; Found Multilingual Telegram Bot</h1>
+      <p class="cs-lead">A community-driven Telegram automation system helping university students at Wolaita Sodo report, search, and reclaim lost student IDs, electronics, and documents across 3 languages.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://github.com/tegegndev/wsulostandfound" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bxl-github'></i> View Source Code
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-message-dots'></i> Build a Telegram Bot
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Target Community</strong>
+        <span>Wolaita Sodo University Students</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Languages Supported</strong>
+        <span>English, Amharic (አማርኛ), Afaan Oromoo</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Core Technology</strong>
+        <span>Python, Telegram Bot API, SQLite/PostgreSQL</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Repository</strong>
+        <span><a href="https://github.com/tegegndev/wsulostandfound" target="_blank" rel="noreferrer">tegegndev/wsulostandfound</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/wsu_lost.webp" type="image/webp">
+        <img src="../../assets/images/projects/wsu_lost.jpg" width="590" height="481" alt="WSU Lost and Found Telegram Bot user interaction preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Multilingual menu interface and report submission flow.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Problem at Wolaita Sodo University</h2>
+      <p>Across university campuses in Ethiopia, losing essential personal items—such as student ID cards, flash drives, notebooks, and dormitory keys—is a common and stressful problem. Traditionally, students relied on crowded Telegram group chats or physical bulletin boards to broadcast lost notices. These messages were quickly buried by unrelated chat spam, making it nearly impossible for finders to connect with original owners.</p>
+      <p>Furthermore, because WSU students come from diverse linguistic regions across Ethiopia, tools exclusively in English or a single language created friction for many users.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. System Architecture &amp; State Management</h2>
+      <p>The bot is architected as a conversational Finite State Machine (FSM). This guarantees structured data capture even across erratic network conditions common on mobile networks.</p>
+
+      <div class="cs-callout">
+        <h4>Submission Workflow:</h4>
+        <p><strong>Language Selection</strong> &rarr; <strong>Action Selection (Report / Search)</strong> &rarr; <strong>Category Filter (ID, Tech, Keys)</strong> &rarr; <strong>Details &amp; Photo Upload</strong> &rarr; <strong>Broadcast Channel Publishing</strong></p>
+      </div>
+
+      <h3>Key Architectural Components:</h3>
+      <ul>
+        <li><strong>Trilingual Localization Dictionary:</strong> All UI strings, error alerts, and prompts are keyed in structured localization files supporting English, Amharic, and Afaan Oromoo.</li>
+        <li><strong>FSM State Handler:</strong> Guides students step-by-step through reporting an item (Category &rarr; Description &rarr; Campus Location &rarr; Contact Preference &rarr; Photo Attachment).</li>
+        <li><strong>Moderation &amp; Broadcast Channel:</strong> Once an item is submitted, the bot formats a structured card and publishes it directly to a dedicated campus Telegram channel, keeping chat groups uncluttered.</li>
+        <li><strong>Keyword Search Engine:</strong> Students looking for missing belongings can run inline search queries (e.g. <code>/search student id 2026</code>) to retrieve active listings instantly.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Ge'ez Script (Amharic) Normalization</h3>
+      <p>Amharic text input presents unique phonetic variations where different characters represent similar sounds (e.g., ሃ, ሐ, ኀ, or ጸ and ፀ). A direct database equality query often missed matches due to alternate character choices.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Built a custom Ge'ez character normalization utility in Python that maps phonetic homophones to canonical representations prior to database indexing and search matching.</p>
+      </div>
+
+      <h3>Challenge B: Preventing Scam Reclaims &amp; Privacy</h3>
+      <p>Publicly exposing high-value items (e.g., expensive calculators, cash, smartphones) invites fraudulent claims from bad actors.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>For sensitive items, the bot withholds specific identifiers (such as serial numbers, lock screen wallpapers, or distinctive markings). Claimants must answer a verification question set by the finder before contact details are released.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Community Impact &amp; Results</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">3</div>
+          <div class="cs-stat-label">Supported Languages</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">100%</div>
+          <div class="cs-stat-label">Open Source Python</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">FSM</div>
+          <div class="cs-stat-label">State-Safe Pipeline</div>
+        </div>
+      </div>
+      <p>By replacing disorganized group chatter with an automated, searchable repository, the bot significantly reduced the time required to recover lost campus belongings while demonstrating the practical power of accessible student-built software in Ethiopia.</p>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../forex-monitor/"><i class='bx bx-left-arrow-alt'></i> Previous: Ethiopia Forex Monitor</a>
+      <a href="../../#projects">All Projects <i class='bx bx-arrow-back'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    // Theme toggle synchronization
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>

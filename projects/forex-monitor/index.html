@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethiopia Forex Currency Exchange Monitor &amp; API | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study on building a real-time Ethiopian bank forex currency monitor and API using Python, web scraping, and automated data normalization.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/forex-monitor/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ethiopia Forex Currency Exchange Monitor &amp; API | Case Study">
+  <meta property="og:description" content="Technical breakdown of building a real-time Ethiopian bank forex rate scraper and comparison API with Python and FastAPI.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/forex-monitor/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/forex-monitor.webp">
+  <meta property="og:image:width" content="1254">
+  <meta property="og:image:height" content="1254">
+  <meta property="og:image:alt" content="Ethiopia Forex Currency Exchange Monitor preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ethiopia Forex Currency Exchange Monitor &amp; API">
+  <meta name="twitter:description" content="Case study on real-time Ethiopian bank forex data scraping and API normalization.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/forex-monitor.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ethiopia Forex Monitor",
+          "item": "https://tegegn.com.et/projects/forex-monitor/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Ethiopia Forex Currency Exchange Monitor & API Case Study",
+      "description": "Technical case study detailing architecture, web scraping mechanics, and API normalization for real-time bank exchange rates in Ethiopia.",
+      "url": "https://tegegn.com.et/projects/forex-monitor/",
+      "image": "https://tegegn.com.et/assets/images/projects/forex-monitor.webp",
+      "datePublished": "2026-08-01",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Web Scraping",
+        "API Development",
+        "Python",
+        "Financial Technology",
+        "Data Normalization"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-forex",
+      "name": "Ethiopia Forex Currency Exchange Monitor",
+      "description": "Real-time exchange rate monitoring platform and REST API comparing currency rates across commercial banks in Ethiopia.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "codeRepository": "https://github.com/tegegndev/ethiofx_api"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">Ethiopia Forex Monitor</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">FINTECH &bull; DATA SCRAPING &bull; REST API</p>
+      <h1 class="cs-title">Ethiopia Forex Currency Exchange Monitor &amp; API</h1>
+      <p class="cs-lead">A unified data extraction pipeline and REST API aggregating daily foreign exchange rates across Ethiopian commercial banks into a single standardized feed.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://github.com/tegegndev/ethiofx_api" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bxl-github'></i> View Source Code
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-envelope'></i> Contact for Custom API
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Role</strong>
+        <span>Full-Stack &amp; Backend Engineer</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Primary Stack</strong>
+        <span>Python, BeautifulSoup4, FastAPI, JSON</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Coverage</strong>
+        <span>CBE, Awash, Dashen, BoA &amp; more</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Repository</strong>
+        <span><a href="https://github.com/tegegndev/ethiofx_api" target="_blank" rel="noreferrer">tegegndev/ethiofx_api</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/forex-monitor.webp" type="image/webp">
+        <img src="../../assets/images/projects/forex-monitor.jpg" width="1254" height="1254" alt="Ethiopia forex currency exchange monitor preview screenshot" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Currency exchange data comparison dashboard and API structure.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Problem &amp; Context in Ethiopia</h2>
+      <p>Following recent macroeconomic reforms in Ethiopia, commercial banks set individual buying and selling exchange rates for major currencies (USD, EUR, GBP, AED, SAR). Because each financial institution publishes rates on disparate web pages with different table schemas, HTML layouts, and publication schedules, comparing rates across the banking sector requires manually checking dozens of websites.</p>
+      <p>Furthermore, local developers, import/export businesses, and Ethiopian diaspora communities lacked a clean, programmatically accessible REST API to query current rates without maintaining custom web scrapers themselves.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Data Pipeline</h2>
+      <p>To provide a resilient, reliable feed, the system is designed with a multi-stage data pipeline:</p>
+
+      <div class="cs-callout">
+        <h4>High-Level System Flow:</h4>
+        <p><strong>Bank HTML Scraping</strong> &rarr; <strong>DOM Normalization Engine</strong> &rarr; <strong>Currency Rate Sanitizer</strong> &rarr; <strong>In-Memory Cache</strong> &rarr; <strong>JSON REST Endpoints</strong></p>
+      </div>
+
+      <p>The core pipeline performs the following steps:</p>
+      <ul>
+        <li><strong>Automated Extraction:</strong> Scrapers periodically query public rate sheets from major Ethiopian commercial banks (Commercial Bank of Ethiopia, Awash Bank, Dashen Bank, Bank of Abyssinia, etc.).</li>
+        <li><strong>Schema Normalization:</strong> Bank tables vary wildly—some list rates as Buying/Selling/Cash, others use Transaction/Buying/Selling. The normalization engine translates each bank's terminology into a uniform JSON schema.</li>
+        <li><strong>Float Parsing &amp; Sanitization:</strong> Cleans comma-separated strings, currency symbols, and inconsistent decimal formats into structured numeric floats.</li>
+        <li><strong>Caching &amp; Rate Limiting:</strong> Implements rate caching to avoid hammering bank servers and guarantee sub-50ms API response times.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Inconsistent and Shifting Bank Table Markup</h3>
+      <p>Commercial bank websites often update their frontend styling, CMS themes, or table column orders without warning. A rigid scraping selector would break on minor markup changes.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented header-heuristic parsing. Instead of relying on brittle index positions (e.g. <code>cells[2]</code>), the parser dynamically inspects table header labels (matching keywords like <em>"Buy"</em>, <em>"Buying"</em>, <em>"Sell"</em>, <em>"Cash"</em>, <em>"Transactional"</em>) to map columns to the appropriate fields dynamically.</p>
+      </div>
+
+      <h3>Challenge B: Network Latency &amp; Server Reliability</h3>
+      <p>Local web hosts can experience periodic downtimes or slow connection handshakes during peak morning hours when exchange rates are posted.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Configured resilient HTTP session handling with custom retry backoffs and timeout policies. If a bank website fails to respond within the threshold, the API serves the last known verified snapshot with a clear <code>last_updated</code> timestamp rather than crashing the request.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. API Sample &amp; Normalized JSON</h2>
+      <p>The API provides standard endpoints for querying rates by bank, currency code, or aggregated market comparisons:</p>
+
+      <div class="cs-code-block">
+        <code>// GET /api/v1/rates/latest?currency=USD
+{
+  "status": "success",
+  "base_currency": "ETB",
+  "target_currency": "USD",
+  "timestamp": "2026-09-08T06:00:00Z",
+  "banks": [
+    {
+      "bank_name": "Commercial Bank of Ethiopia",
+      "bank_code": "CBE",
+      "buying_rate": 138.4520,
+      "selling_rate": 141.2210,
+      "updated_at": "2026-09-08T05:30:12Z"
+    },
+    {
+      "bank_name": "Awash Bank",
+      "bank_code": "AWASH",
+      "buying_rate": 139.1050,
+      "selling_rate": 141.8870,
+      "updated_at": "2026-09-08T05:45:00Z"
+    }
+  ]
+}</code>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>5. Key Takeaways &amp; Next Steps</h2>
+      <p>Building <code>ethiofx_api</code> demonstrated the importance of fault-tolerant web scraping and robust schema normalization in financial data applications. Future enhancements include:</p>
+      <ul>
+        <li>Historical exchange rate trend charts and daily volatility alerts.</li>
+        <li>A lightweight Telegram notification bot for instant rate change alerts.</li>
+        <li>GraphQL endpoint support for granular client queries.</li>
+      </ul>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../../#projects"><i class='bx bx-arrow-back'></i> Back to Portfolio</a>
+      <a href="../wsu-lost-and-found/">Next: WSU Lost &amp; Found Bot <i class='bx bx-right-arrow-alt'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    // Theme toggle synchronization
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      // Initial icon state
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>
