@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSU Cafeteria Milling App: Flutter &amp; Supabase Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Case study on engineering WSU Student Cafeteria Milling—a Flutter and Supabase mobile ticketing system preventing duplicate meals across Wolaita Sodo University.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/wsu-dining-app/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WSU Cafeteria Milling App: Flutter &amp; Supabase Case Study">
+  <meta property="og:description" content="Technical breakdown of a digital student meal verification system built with Flutter, Supabase, and a React admin portal for Wolaita Sodo University.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/wsu-dining-app/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/wsu_dining.webp">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="WSU Dining App preview screenshot">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WSU Cafeteria Milling App Case Study">
+  <meta name="twitter:description" content="How Flutter, Supabase, and QR verification modernized university dining hall logistics at Wolaita Sodo University.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/wsu_dining.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "WSU Dining App",
+          "item": "https://tegegn.com.et/projects/wsu-dining-app/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "WSU Student Cafeteria Milling Mobile App Case Study",
+      "description": "Technical case study detailing architecture, QR authentication, offline reconciliation, and React admin dashboards for university cafeteria operations.",
+      "url": "https://tegegn.com.et/projects/wsu-dining-app/",
+      "image": "https://tegegn.com.et/assets/images/projects/wsu_dining.webp",
+      "datePublished": "2026-06-20",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Flutter",
+        "Dart",
+        "Supabase",
+        "React",
+        "QR Code Verification",
+        "Ethiopian Calendar Support"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-wsudining",
+      "name": "WSU Student Cafeteria Milling",
+      "description": "Cross-platform mobile and web application for university dining hall ticketing, student verification, and cafeteria inventory management.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Android, Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "codeRepository": "https://github.com/tegegndev"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">WSU Dining App</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">FLUTTER &bull; SUPABASE &bull; CAMPUS LOGISTICS</p>
+      <h1 class="cs-title">WSU Student Cafeteria Milling System</h1>
+      <p class="cs-lead">A digital meal verification system designed for Wolaita Sodo University, modernizing cafeteria logistics by replacing paper meal cards with real-time QR/barcode scanning, fraud prevention, and an executive React admin dashboard.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bxl-github'></i> View GitHub Profile
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-devices'></i> Inquire for Mobile App Dev
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Client / Scope</strong>
+        <span>Wolaita Sodo University Dining Hall</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Frontend Mobile</strong>
+        <span>Flutter 3.x, Dart 3.x, Camera / QR ML</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Backend &amp; Admin</strong>
+        <span>Supabase (PostgreSQL, Auth, RLS), React</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Languages Supported</strong>
+        <span>English, Amharic, Afaan Oromo, Wolaytta</span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/wsu_dining.webp" type="image/webp">
+        <img src="../../assets/images/projects/wsu_dining.png" width="1024" height="1024" alt="WSU Student Cafeteria Milling interface screenshot" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Cafeteria officer QR scanner view and student verification status.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Problem: Manual Ticking &amp; Food Waste</h2>
+      <p>Wolaita Sodo University serves thousands of residential students across multiple cafeteria sessions daily (Breakfast, Lunch, Dinner). Prior to digitization, the university relied on manual paper punch cards and student ID visual checks. This approach suffered from several chronic challenges:</p>
+      <ul>
+        <li><strong>Duplicate Meal Abuse:</strong> Students sharing cards or re-entering cafeteria queues during the same session, inflating food supply demands and causing food shortages.</li>
+        <li><strong>Slow Queue Throughput:</strong> Physical card verification caused bottleneck queues of hundreds of students under high peak meal times.</li>
+        <li><strong>Lack of Real-Time Auditing:</strong> University management had no immediate data on how many meals were consumed per shift, making daily budget allocation and grocery planning imprecise.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Solution Overview</h2>
+      <p>The system consists of two tightly coupled components backed by Supabase:</p>
+      <div class="cs-callout">
+        <h4>System Topology:</h4>
+        <p><strong>Mobile App (Flutter)</strong> for cafeteria line officers &rarr; <strong>Supabase Cloud Database</strong> with Row Level Security &rarr; <strong>React Web Admin Dashboard</strong> for university managers.</p>
+      </div>
+
+      <h3>Core Capabilities:</h3>
+      <ul>
+        <li><strong>Rapid QR / Barcode Ticking:</strong> Camera scanner identifies student QR codes in under 200 milliseconds, validating active enrollment and session eligibility.</li>
+        <li><strong>Duplicate Prevention Guard:</strong> When an ID is scanned, the database atomic transaction verifies if the student has already ticked for the current meal session. Duplicate attempts trigger an instant visual and acoustic alert.</li>
+        <li><strong>Ethiopian Calendar (Ge'ez) Integration:</strong> Native date calculation aligning meal attendance records with the Ethiopian fiscal and academic calendar.</li>
+        <li><strong>4-Language Localization:</strong> Full UI support for English, Amharic (አማርኛ), Afaan Oromoo, and Wolaytta (Wolaitta Dootta).</li>
+        <li><strong>React Admin Dashboard:</strong> Comprehensive analytics reporting showing hourly meal consumption, attendance rates, and cafeteria efficiency trends.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Sub-Second QR Validation in Low-Connectivity Environments</h3>
+      <p>Dining halls located in basement levels or crowded campus sectors frequently experience intermittent cellular connectivity, which would stall cloud API calls.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented offline optimistic caching. The Flutter client preloads active student verification hashes at the start of each meal shift. Scans are validated locally in milliseconds, and check-in logs are queued and synchronized with Supabase once network connectivity resumes.</p>
+      </div>
+
+      <h3>Challenge B: Multi-Language Font Rendering Across Regional Devices</h3>
+      <p>Rendering Ethiopic scripts (Amharic and Wolaytta) alongside Latin scripts without layout shifts requires careful typography budgeting in Flutter.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Configured unified Google Fonts (Noto Sans Ethiopic and Space Grotesk) with automatic fallback handlers, ensuring crisp glyph rendering across varied Android OS versions.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Results &amp; Operational Impact</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">&lt;200ms</div>
+          <div class="cs-stat-label">Scan Latency</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">0%</div>
+          <div class="cs-stat-label">Duplicate Meals</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">4</div>
+          <div class="cs-stat-label">Regional Languages</div>
+        </div>
+      </div>
+      <p>The WSU Student Cafeteria Milling system demonstrated that mobile-first digital identity and automated verification can transform large-scale public institutions in Ethiopia, saving campus resources while providing students with a fast and dignified dining experience.</p>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../wsu-lost-and-found/"><i class='bx bx-left-arrow-alt'></i> Previous: WSU Lost &amp; Found Bot</a>
+      <a href="../kokeba/">Next: Kokeba Voice App <i class='bx bx-right-arrow-alt'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>

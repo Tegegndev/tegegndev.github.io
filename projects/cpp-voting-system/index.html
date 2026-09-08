@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ Departmental Voting System Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study of a C++ departmental voting system featuring structured record types, voter authentication, duplicate vote prevention, and algorithmic winner tallying.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/cpp-voting-system/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="C++ Departmental Voting System Case Study">
+  <meta property="og:description" content="Technical case study on building an authentic C++ CLI departmental voting system with record structs and fraud prevention.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/cpp-voting-system/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/voting_system.webp">
+  <meta property="og:image:width" content="460">
+  <meta property="og:image:height" content="488">
+  <meta property="og:image:alt" content="C++ voting management system code and CLI demonstration preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="C++ Departmental Voting System Case Study">
+  <meta name="twitter:description" content="Deep dive into structured C++ data modeling and authentication algorithms in an academic voting system.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/voting_system.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "C++ Voting System",
+          "item": "https://tegegn.com.et/projects/cpp-voting-system/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "C++ Departmental Voting Management System Case Study",
+      "description": "Technical case study exploring structured programming, voter verification flags, and winner aggregation in a C++ console application.",
+      "url": "https://tegegn.com.et/projects/cpp-voting-system/",
+      "image": "https://tegegn.com.et/assets/images/projects/voting_system.webp",
+      "datePublished": "2026-03-20",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "C++",
+        "Data Structures",
+        "Linear Search",
+        "Authentication",
+        "Structured Programming"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-votingsystem",
+      "name": "C++ Departmental Voting Management System",
+      "description": "Console-based departmental election management system engineered in C++ with user authentication, vote auditing, and real-time tabulation.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Cross-platform (Linux, Windows, macOS)",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "codeRepository": "https://github.com/tegegndev/cpp-voting-management-system"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">C++ Voting System</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">C++ &bull; DATA STRUCTURES &bull; CLI ARCHITECTURE</p>
+      <h1 class="cs-title">Departmental Voting Management System</h1>
+      <p class="cs-lead">A console application developed for Wolaita Sodo University's Fundamentals of Programming curriculum, demonstrating structured records, voter identity verification, and tallying logic.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://github.com/tegegndev/cpp-voting-management-system" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bxl-github'></i> View Source Code
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-code-alt'></i> Contact Developer
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Language &amp; Standard</strong>
+        <span>C++ (C++11 / C++17 Compatible)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Core Concepts</strong>
+        <span>Structs, Linear Search, Validation, CLI</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Academic Context</strong>
+        <span>WSU Fundamentals of Programming II</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Repository</strong>
+        <span><a href="https://github.com/tegegndev/cpp-voting-management-system" target="_blank" rel="noreferrer">tegegndev/cpp-voting-management-system</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/voting_system.webp" type="image/webp">
+        <img src="../../assets/images/projects/voting_system.png" width="460" height="488" alt="C++ Departmental Voting Management System output preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Console execution showing voter authentication, department selection, and real-time tabulation.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Academic Challenge &amp; Objectives</h2>
+      <p>As part of the Computer Science curriculum at Wolaita Sodo University (Group 7, Fundamentals of Programming II), the task was to architect an automated voting system from scratch in pure C++. The primary objective was to replace paper ballots in departmental student representative elections with a structured, fraud-resistant digital console pipeline.</p>
+      <p>Key project constraints included:</p>
+      <ul>
+        <li><strong>Strict Voter Authentication:</strong> Only students registered in the authorized voter roll must be permitted to vote.</li>
+        <li><strong>One-Vote Integrity:</strong> A voter must be prevented from casting multiple ballots under any circumstances.</li>
+        <li><strong>Deterministic Tabulation:</strong> The system must tabulate results in constant time and accurately determine the winning department or candidate.</li>
+        <li><strong>Zero External Dependencies:</strong> Rely exclusively on the standard C++ library (<code>&lt;iostream&gt;</code> and <code>&lt;string&gt;</code>) for clean cross-platform portability.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Data Structures &amp; Architectural Design</h2>
+      <p>The system is built upon composite data structures that encapsulate entity states directly in memory:</p>
+
+      <div class="cs-code-block">
+        <pre><code><span class="token-keyword">struct</span> <span class="token-type">department</span> {
+    <span class="token-type">int</span> id;
+    <span class="token-type">string</span> dept_name;
+    <span class="token-type">int</span> vote_count;
+};
+
+<span class="token-keyword">struct</span> <span class="token-type">user</span> {
+    <span class="token-type">int</span> id;
+    <span class="token-type">string</span> name;
+    <span class="token-type">bool</span> is_voted = <span class="token-keyword">false</span>;
+};</code></pre>
+      </div>
+
+      <p>By coupling each voter record with a boolean <code>is_voted</code> flag, state transitions are maintained throughout the execution lifecycle without needing external database overhead.</p>
+
+      <h3>Modular Function Architecture:</h3>
+      <ul>
+        <li><code>show_depts()</code>: Iterates through the department array to display indexed ballot choices (Information Technology, Information Systems, Computer Science, Mechanical, Electrical).</li>
+        <li><code>cast_vote()</code>: Prompts for voter ID input, scans the voter roll via linear search, verifies eligibility, captures the chosen department ID with bounds validation, and atomically increments the tally.</li>
+        <li><code>show_ranking()</code>: Formats and prints real-time vote distribution across all departments.</li>
+        <li><code>show_winner()</code>: Executes an extremum search algorithm across the department array to announce the leading department.</li>
+        <li><code>main()</code>: Implements an interactive event loop with robust switchable choices and graceful exit conditions.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Fraud Prevention &amp; Input Validation</h2>
+      <p>Voting integrity is enforced through two critical defensive mechanisms implemented directly in the vote casting routine:</p>
+
+      <h3>A. Voter ID Verification</h3>
+      <p>When an ID is entered, the system performs a bounded linear search over the array of registered students. If the ID does not match an entry in the pre-configured roll, access is immediately denied with an informative error message.</p>
+
+      <h3>B. Double-Vote Mitigation</h3>
+      <p>Before any ballot options are presented, the student's record is checked for <code>users_list[found_index].is_voted</code>. If already marked <code>true</code>, the transaction is rejected:</p>
+      
+      <div class="cs-callout">
+        <h4>Defensive Verification Logic:</h4>
+        <p><code>if (users_list[found_index].is_voted) { cout &lt;&lt; "Sorry " &lt;&lt; users_list[found_index].name &lt;&lt; ", you have already voted!\n"; return; }</code></p>
+      </div>
+
+      <h3>C. Ballot Boundary Protection</h3>
+      <p>User selections outside the allowable index range (<code>choice &lt; 1 || choice &gt; 5</code>) are safely discarded, preventing array out-of-bounds memory access or segmentation faults.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Educational Impact &amp; Algorithmic Takeaways</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">O(1)</div>
+          <div class="cs-stat-label">Vote Tally Complexity</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">100%</div>
+          <div class="cs-stat-label">Duplicate Prevention</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">Zero</div>
+          <div class="cs-stat-label">External Dependencies</div>
+        </div>
+      </div>
+      <p>This project served as a foundational milestone in mastering core systems programming concepts in C++: static memory layout, procedural decomposition, pointer/array mechanics, and defensive input processing. The complete source code is publicly accessible on GitHub at <a href="https://github.com/tegegndev/cpp-voting-management-system" target="_blank" rel="noreferrer">tegegndev/cpp-voting-management-system</a>.</p>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../telegram-story-downloader/"><i class='bx bx-left-arrow-alt'></i> Previous: Telegram Story Downloader</a>
+      <a href="../forex-monitor/">Next: EthioFX Currency Monitor <i class='bx bx-right-arrow-alt'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>

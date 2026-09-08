@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Story Downloader Bot Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study detailing how a high-performance Python and Flask Telegram bot retrieves, caches, and downloads public stories with inline search and connection pooling.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/telegram-story-downloader/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Telegram Story Downloader Bot Case Study">
+  <meta property="og:description" content="Technical case study on building a Python & Flask Telegram bot with pyTelegramBotAPI, connection pooling, and atomic user tracking.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/telegram-story-downloader/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/tg_story.webp">
+  <meta property="og:image:width" content="514">
+  <meta property="og:image:height" content="483">
+  <meta property="og:image:alt" content="Telegram story downloader preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Telegram Story Downloader Bot Case Study">
+  <meta name="twitter:description" content="Deep dive into Telegram story retrieval automation with Python and Flask.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/tg_story.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Telegram Story Downloader",
+          "item": "https://tegegn.com.et/projects/telegram-story-downloader/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Telegram Story Downloader Bot Architecture Case Study",
+      "description": "Technical case study exploring webhook routing, connection pooling, and atomic state handling in Python Telegram automation.",
+      "url": "https://tegegn.com.et/projects/telegram-story-downloader/",
+      "image": "https://tegegn.com.et/assets/images/projects/tg_story.webp",
+      "datePublished": "2026-05-10",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Telegram Bot API",
+        "Python",
+        "Flask",
+        "Webhooks",
+        "Connection Pooling",
+        "Automation"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-storydownloader",
+      "name": "Telegram Story Downloader Bot",
+      "description": "Telegram automation bot allowing users to view and download public stories via username queries and inline commands.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Telegram, Linux",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "codeRepository": "https://github.com/tegegndev/telegram-story-downloader"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">Telegram Story Downloader</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">PYTHON 3.9+ &bull; FLASK &bull; BOT AUTOMATION</p>
+      <h1 class="cs-title">Telegram Story Downloader Bot</h1>
+      <p class="cs-lead">A resilient Python automation service enabling Telegram users to search, view, and download active public stories via direct messages or global inline search mode.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://github.com/tegegndev/telegram-story-downloader" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bxl-github'></i> View Source Code
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-code-block'></i> Hire for Python Automation
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Runtime &amp; Framework</strong>
+        <span>Python 3.9+, pyTelegramBotAPI, Flask</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Networking</strong>
+        <span>Requests Session, HTTP Connection Pool</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Deployment Mode</strong>
+        <span>Flask Webhook (Prod) &amp; Polling (Dev)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Repository</strong>
+        <span><a href="https://github.com/tegegndev/telegram-story-downloader" target="_blank" rel="noreferrer">tegegndev/telegram-story-downloader</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/tg_story.webp" type="image/webp">
+        <img src="../../assets/images/projects/tg_story.jpg" width="514" height="483" alt="Telegram story downloader bot interaction preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Story discovery query and direct media download actions.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Problem: Disappearing Ephemeral Media</h2>
+      <p>Telegram Stories provide a vibrant way for channels and individuals to share quick 24-hour video and photo updates. However, the standard Telegram client does not provide a native one-click save button for public stories. Users who wish to archive useful design tutorials, announcements, or community media were forced to use screen recording software, resulting in degraded quality and cumbersome manual cropping.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Execution Pipeline</h2>
+      <p>The bot is built to handle concurrent user requests efficiently while respecting Telegram's strict API rate quotas:</p>
+
+      <div class="cs-callout">
+        <h4>Request Pipeline:</h4>
+        <p><strong>User Query (@username)</strong> &rarr; <strong>Force-Join Validation (Cached)</strong> &rarr; <strong>HTTP Pooled API Call</strong> &rarr; <strong>Media Extraction</strong> &rarr; <strong>Inline / Chat Delivery</strong></p>
+      </div>
+
+      <h3>Key Architectural Features:</h3>
+      <ul>
+        <li><strong>Dual Deployment Modes:</strong> Supports lightweight production serving via a Flask WSGI webhook server, alongside zero-configuration long-polling for local testing.</li>
+        <li><strong>HTTP Connection Pooling:</strong> Utilizes a shared <code>requests.Session()</code> pool with customized retry adapters, eliminating socket creation overhead on repetitive API handshakes.</li>
+        <li><strong>Inline Search Mode:</strong> Users can invoke the bot in any personal or group chat by typing <code>@BotUsername username</code>, allowing quick story previewing without opening a direct bot chat.</li>
+        <li><strong>Atomic State Persistence:</strong> Employs atomic file replacement patterns when persisting subscriber statistics into <code>users.json</code>, preventing file corruption on sudden process terminations.</li>
+        <li><strong>Structured Logging with Loguru:</strong> Detailed color-coded observability capturing error traces and admin notifications in real time.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Telegram API Rate Limits &amp; Chat Membership Verification</h3>
+      <p>Checking if a user has joined the prerequisite channel before processing a story query requires calling <code>get_chat_member</code> on every single message, which rapidly triggers Telegram <code>429 Too Many Requests</code> errors.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented an in-memory TTL (Time-To-Live) cache for channel membership verifications. Once a user's membership is confirmed, their verification status is cached for 10 minutes, eliminating redundant API round-trips by over 90%.</p>
+      </div>
+
+      <h3>Challenge B: Safe High-Concurrency User Tracking</h3>
+      <p>Appending user IDs directly to a flat JSON file under high traffic can cause race conditions and corrupted JSON syntax.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Wrote a thread-safe atomic write routine: serialized JSON is written to a temporary file (<code>.users.json.tmp</code>) and atomically renamed using OS-level <code>os.replace()</code>, guaranteeing zero half-written files.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Results &amp; Code Quality</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">10min</div>
+          <div class="cs-stat-label">Cache TTL</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">&lt;50ms</div>
+          <div class="cs-stat-label">Cached Response</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">Atomic</div>
+          <div class="cs-stat-label">Storage Integrity</div>
+        </div>
+      </div>
+      <p>The project is actively maintained on GitHub at <a href="https://github.com/tegegndev/telegram-story-downloader" target="_blank" rel="noreferrer">tegegndev/telegram-story-downloader</a>, demonstrating practical backend engineering, network resilience, and modular Python system design.</p>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../kokeba/"><i class='bx bx-left-arrow-alt'></i> Previous: Kokeba</a>
+      <a href="../cpp-voting-system/">Next: C++ Voting System <i class='bx bx-right-arrow-alt'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokeba: Voice Vocals &amp; AI Social App Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Case study on developing Kokeba—an audio-first short-form social web app built with React 19, Google Gemini GenAI, Supabase, and Wavesurfer.js.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/kokeba/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Kokeba: Voice Vocals &amp; AI Social App Case Study">
+  <meta property="og:description" content="Technical breakdown of building a modern voice and video expression platform using React 19, Wavesurfer.js, Supabase, and Google Gemini API.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/kokeba/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/kokeba.webp">
+  <meta property="og:image:width" content="1254">
+  <meta property="og:image:height" content="1254">
+  <meta property="og:image:alt" content="Kokeba social web app preview screenshot">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kokeba Voice App Case Study">
+  <meta name="twitter:description" content="Architecture and engineering behind an audio-first social network built with React 19 and Supabase.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/kokeba.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Kokeba",
+          "item": "https://tegegn.com.et/projects/kokeba/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Kokeba: Voice Vocals & AI Social App Case Study",
+      "description": "Technical case study detailing architecture, audio waveform rendering, and Supabase integration for a short-form audio platform.",
+      "url": "https://tegegn.com.et/projects/kokeba/",
+      "image": "https://tegegn.com.et/assets/images/projects/kokeba.webp",
+      "datePublished": "2026-06-01",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "React",
+        "TypeScript",
+        "Supabase",
+        "Audio Processing",
+        "Google Gemini API",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-kokeba",
+      "name": "Kokeba",
+      "description": "TikTok-style voice vocal and vent sharing social web app featuring waveform previews and real-time audio interaction.",
+      "applicationCategory": "SocialNetworkingApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "url": "https://kokeba.vercel.app/"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">Kokeba</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">REACT 19 &bull; AUDIO WAVEFORMS &bull; SUPABASE</p>
+      <h1 class="cs-title">Kokeba: Voice Vocals &amp; Vent Sharing Platform</h1>
+      <p class="cs-lead">A short-form, voice-first social web application designed for raw vocal expression, vent sharing, and spoken-word interactions with real-time waveform visualization and Google Gemini AI processing.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://kokeba.vercel.app/" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bx-link-external'></i> View Live App
+        </a>
+        <a href="https://github.com/tegegndev" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-secondary">
+          <i class='bx bxl-github'></i> View GitHub Profile
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Tagline</strong>
+        <span>Your Voice is Your Brand</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Frontend Architecture</strong>
+        <span>React 19, TypeScript, Vite, Tailwind CSS 4</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Backend &amp; Storage</strong>
+        <span>Supabase (PostgreSQL, Storage Buckets, Auth)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Audio &amp; AI Engine</strong>
+        <span>Wavesurfer.js, Google Gemini GenAI SDK</span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/kokeba.webp" type="image/webp">
+        <img src="../../assets/images/projects/kokeba.png" width="1254" height="1254" alt="Kokeba vocal app feed screenshot" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Voice feed cards showing real-time audio playback and comment threads.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Vision: Bringing Raw Spoken Voice to Social Media</h2>
+      <p>Modern social media is saturated with hyper-edited visual content and text-heavy feeds. Kokeba was created as an antidote—a dedicated space for honest, unfiltered audio expression. Users record short voice clips, spoken reflections, vocal melodies, or daily vents, fostering intimacy and empathy that text comments cannot capture.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Audio Processing</h2>
+      <p>The frontend is engineered as a responsive, mobile-first Single Page Application with continuous vertical audio scrolling:</p>
+
+      <div class="cs-callout">
+        <h4>Data Pipeline:</h4>
+        <p><strong>MediaRecorder Web API</strong> &rarr; <strong>Blob Generation</strong> &rarr; <strong>Supabase Audio Bucket Upload</strong> &rarr; <strong>Wavesurfer.js Peak Extraction</strong> &rarr; <strong>Interactive Waveform Player</strong></p>
+      </div>
+
+      <h3>Key Engineering Features:</h3>
+      <ul>
+        <li><strong>Real-Time Waveform Rendering:</strong> Uses <code>wavesurfer.js</code> to generate interactive visual sound waves for each post, allowing users to scrub through audio tracks seamlessly.</li>
+        <li><strong>Google Gemini AI Integration:</strong> Integrates <code>@google/genai</code> to analyze spoken audio themes, provide transcription assists, and generate intelligent content tagging.</li>
+        <li><strong>Fluid Gestures &amp; Transitions:</strong> Leveraged <code>motion</code> (Framer Motion) for smooth swipe gestures, modal dialogs, and audio player state changes.</li>
+        <li><strong>Supabase Backend Security:</strong> Comprehensive Row Level Security (RLS) policies govern private feeds, user followers, comments, and storage access tokens.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Audio Playback Collision in Infinite Feeds</h3>
+      <p>When users scroll quickly through an audio feed, multiple audio streams could potentially play concurrently, causing overwhelming sound overlap.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Built a centralized React Audio Context provider that maintains a single active playback channel. As soon as a user clicks play on any clip (or when a new card scrolls into full viewport view), all previous audio instances are immediately paused and memory-released.</p>
+      </div>
+
+      <h3>Challenge B: Mobile Web Browser Audio Codec Fragmentation</h3>
+      <p>Different mobile browsers (iOS Safari vs Android Chrome) handle <code>MediaRecorder</code> container formats differently (e.g. <code>audio/webm</code> vs <code>audio/mp4</code>).</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Configured MIME-type detection with graceful fallbacks to capture cross-platform compatible audio containers before streaming blobs to Supabase Storage.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Results &amp; Live Availability</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">React 19</div>
+          <div class="cs-stat-label">Modern React Stack</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">Gemini</div>
+          <div class="cs-stat-label">AI Audio Analysis</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">Vercel</div>
+          <div class="cs-stat-label">Global CDN Edge</div>
+        </div>
+      </div>
+      <p>Kokeba is deployed and live at <a href="https://kokeba.vercel.app/" target="_blank" rel="noreferrer">kokeba.vercel.app</a>, serving as an active showcase of modern full-stack TypeScript, audio engineering, and reactive design.</p>
+    </section>
+
+    <!-- Footer Navigation -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../wsu-dining-app/"><i class='bx bx-left-arrow-alt'></i> Previous: WSU Dining App</a>
+      <a href="../telegram-story-downloader/">Next: Telegram Story Bot <i class='bx bx-right-arrow-alt'></i></a>
+    </nav>
+
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const newTheme = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        const icon = themeBtn.querySelector("i");
+        if (icon) {
+          icon.className = isDark ? "bx bx-sun" : "bx bx-moon";
+        }
+      });
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const icon = themeBtn.querySelector("i");
+      if (icon && currentTheme === "dark") {
+        icon.className = "bx bx-sun";
+      }
+    }
+  </script>
+
+</body>
+</html>
