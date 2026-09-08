@@ -9,12 +9,14 @@ Tegegn Wukianos is an Ethiopian developer and IT student at Wolaita Sodo Univers
 ## Projects & Case Studies
 
 - [Tegegn Wukianos Portfolio](https://tegegn.com.et/): Personal portfolio and project showcase of Ethiopian developer Tegegn Wukianos.
+- [taAI: Wolaytta AI & Multilingual Translator Case Study](https://tegegn.com.et/projects/taai/): Technical case study on building taAI: a generative AI assistant and bidirectional translation engine for the low-resource Wolaytta language using Google Gemini, Flask blueprints, and Supabase.
+- [EMWA Donation & Payment Gateway Integration Case Study](https://tegegn.com.et/projects/emwa-payment/): Case study on integrating the Chapa payment gateway, TanStack Start server functions, and automated PDF receipt generation for the Ethiopian Media Women Association (EMWA) at https://ethmwa.org/ (Role: Payment Integration Engineer).
+- [Visit Wolaita Tourism & AI Try-On Case Study](https://tegegn.com.et/projects/visit-wolaita/): Technical case study on building a cultural tourism portal featuring an AI Virtual Try-On API for traditional Ethiopian attire using Python and Flask.
 - [Ethiopia Forex Monitor Case Study](https://tegegn.com.et/projects/forex-monitor/): In-depth case study on real-time Ethiopian commercial bank exchange rate scraping and normalized REST API architecture.
 - [WSU Lost & Found Bot Case Study](https://tegegn.com.et/projects/wsu-lost-and-found/): Technical breakdown of a trilingual (English, Amharic, Afaan Oromoo) campus Telegram bot using Python and FSM state handling.
+- [Sirba Android Music App Case Study](https://tegegn.com.et/projects/sirba/): Architecture deep dive into background audio playback services, low-bandwidth offline caching, and media lifecycle integration on Android.
 - [WSU Dining App Case Study](https://tegegn.com.et/projects/wsu-dining-app/): Architecture deep dive into Flutter QR scanner optimization, Supabase RLS security, offline reconciliation, and Ethiopian calendar sync for campus meal digitalization.
 - [Kokeba Social Audio App Case Study](https://tegegn.com.et/projects/kokeba/): Full-stack case study on React 19, Supabase, Wavesurfer.js audio visualization, and Google Gemini AI automated moderation for Ethiopian voice sharing.
-- [Telegram Story Downloader Case Study](https://tegegn.com.et/projects/telegram-story-downloader/): Technical exploration of Python 3.9+, pyTelegramBotAPI, connection pooling, Flask webhooks, and atomic state handling.
-- [C++ Voting Management System Case Study](https://tegegn.com.et/projects/cpp-voting-system/): Academic case study detailing structured records, linear search voter authentication, and duplicate vote mitigation algorithms in C++.
 - [GitHub Profile](https://github.com/tegegndev): Open-source repositories including a C++ voting management system, a forex currency monitor, a WSU dining app, and Telegram automation bots.
 - [LinkedIn](https://www.linkedin.com/in/tegegn-wukianos-1a6469290): Professional profile with work history and certifications.
 - [Curriculum Vitae](https://tegegn.com.et/assets/images/Tegegn_Wukainos_CV.pdf): Downloadable CV for Tegegn Wukianos.

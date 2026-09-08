@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Wolaita: Tourism &amp; AI Virtual Try-On | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study on building Visit Wolaita: a tourism platform and Generative AI virtual cultural dress try-on web application with Python and Flask.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/visit-wolaita/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Visit Wolaita: Tourism &amp; AI Virtual Try-On | Case Study">
+  <meta property="og:description" content="Technical breakdown of building a cultural tourism platform featuring AI virtual try-on for traditional Ethiopian attire.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/visit-wolaita/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/visit-wolaita.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="Visit Wolaita AI Virtual Try-on preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Visit Wolaita: Tourism &amp; AI Virtual Try-On">
+  <meta name="twitter:description" content="Case study on building a cultural tourism web app with AI-powered traditional dress virtual try-on.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/visit-wolaita.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Visit Wolaita",
+          "item": "https://tegegn.com.et/projects/visit-wolaita/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Visit Wolaita: Cultural Tourism & AI Virtual Try-On Case Study",
+      "description": "Technical case study detailing architecture, AI virtual try-on API, and rate-limited image processing for cultural tourism in Wolaita, Ethiopia.",
+      "url": "https://tegegn.com.et/projects/visit-wolaita/",
+      "image": "https://tegegn.com.et/assets/images/projects/visit-wolaita.webp",
+      "datePublished": "2026-08-25",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Generative AI",
+        "Virtual Try-On",
+        "Flask Web App",
+        "Cultural Tourism",
+        "Rate Limiting"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-visit-wolaita",
+      "name": "Visit Wolaita",
+      "description": "Tourism portal and AI virtual try-on application celebrating the cultural heritage of Wolaita Zone.",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "url": "https://visit-wolaita.tegegn.com.et/",
+      "codeRepository": "https://github.com/Tegegndev/visit_Wolaita"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">Visit Wolaita</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">GENERATIVE AI &bull; CULTURAL TOURISM &bull; PYTHON FLASK</p>
+      <h1 class="cs-title">Visit Wolaita &amp; AI Virtual Cultural Try-On</h1>
+      <p class="cs-lead">An interactive cultural tourism portal for Wolaita Zone, Southern Ethiopia, pairing destination galleries with an AI-powered virtual try-on system for traditional Wolaytta attire.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://visit-wolaita.tegegn.com.et/" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bx-link-external'></i> Open Live Site
+        </a>
+        <a href="https://github.com/Tegegndev/visit_Wolaita" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-secondary">
+          <i class='bx bxl-github'></i> View Repository
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Role</strong>
+        <span>Full-Stack &amp; AI Integration Engineer</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Tech Stack</strong>
+        <span>Python, Flask 3.1, Flask-Limiter, Passenger WSGI</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>AI Feature</strong>
+        <span>Generative Virtual Try-On API (<code>/api/tryon</code>)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Live Production URL</strong>
+        <span><a href="https://visit-wolaita.tegegn.com.et/" target="_blank" rel="noreferrer">visit-wolaita.tegegn.com.et</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/visit-wolaita.webp" type="image/webp">
+        <img src="../../assets/images/projects/visit-wolaita.jpg" width="1200" height="1200" alt="Visit Wolaita AI Try-on preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Visit Wolaita platform featuring cultural galleries and AI virtual try-on integration.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Vision: Cultural Heritage Meets Applied AI</h2>
+      <p>Wolaita Zone possesses a vibrant history, breathtaking landscapes (Mount Damota, Ajora Falls), and distinctive traditional handwoven textiles characterized by bold yellow, red, and black patterns. However, digital representation of Wolaita's cultural assets has historically been sparse online.</p>
+      <p>Visit Wolaita was created to provide a modern, interactive digital window into Wolaita culture. Going beyond static tourism brochure sites, the platform integrates an innovative <strong>AI Virtual Try-On</strong> feature that allows global visitors and diaspora members to upload their personal portraits and realistically envision themselves adorned in authentic Wolaytta traditional attire.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Virtual Try-On Pipeline</h2>
+      <p>The backend application is structured in Python using Flask with WSGI compatibility for production deployment:</p>
+
+      <div class="cs-callout">
+        <h4>AI Try-On Execution Pipeline:</h4>
+        <p><strong>User Photo Upload</strong> &rarr; <strong>Garment ID Selection</strong> &rarr; <strong>Rate Limiter Check</strong> &rarr; <strong>Generative Try-On Inference</strong> &rarr; <strong>Local Asset Caching</strong> &rarr; <strong>Interactive Result View</strong></p>
+      </div>
+
+      <ul>
+        <li><strong>Rate-Controlled API (<code>POST /api/tryon</code>):</strong> To prevent abuse of resource-intensive generative models, the endpoint enforces a strict rate limit of two requests per hour per client IP using <code>Flask-Limiter</code>.</li>
+        <li><strong>Automated Asset Pipeline:</strong> Upon successful generation, the service downloads the high-resolution output into a persistent <code>generated_images/</code> storage directory and serves normalized <code>imageUrl</code> and <code>downloadUrl</code> paths.</li>
+        <li><strong>Production WSGI Architecture:</strong> Ready for Passenger WSGI engines via <code>passenger_wsgi.py</code>, enabling seamless hosting on standard Linux environments.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Managing Resource-Heavy Image Inference</h3>
+      <p>Generative computer vision models require significant processing time and network bandwidth, risking server timeout during client requests.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Structured the client-side interface with interactive state indicators and optimistic progress feedback, while the backend utilizes asynchronous request pooling and automatic image persistence to ensure reliable delivery even on slow mobile connections.</p>
+      </div>
+
+      <h3>Challenge B: Abuse Prevention on Shared Hosting</h3>
+      <p>Public generative AI endpoints are frequent targets for automated bots that can rapidly deplete API quotas.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented IP-based sliding window rate limits via <code>Flask-Limiter</code>, paired with payload structure validation that rejects invalid image strings before reaching the AI model tier.</p>
+      </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../emwa-payment/" class="cs-btn cs-btn-secondary">
+        <i class='bx bx-arrow-back'></i> Previous: EMWA Payment Gateway
+      </a>
+      <a href="../../#projects" class="cs-btn cs-btn-primary">
+        All Projects <i class='bx bx-arrow-right'></i>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tegegn Wukianos. Built with passion in Wolaita Sodo, Ethiopia.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>

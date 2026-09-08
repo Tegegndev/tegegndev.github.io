@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMWA Donation &amp; Payment Gateway Integration | Tegegn Wukianos</title>
+  <meta name="description" content="Case study on integrating a secure Chapa payment gateway and dynamic donation receipt system for the Ethiopian Media Women Association using TanStack Start and TypeScript.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/emwa-payment/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EMWA Donation &amp; Payment Gateway Integration | Case Study">
+  <meta property="og:description" content="Technical breakdown of integrating Chapa payment gateway, TanStack Start server functions, and automated receipt generation for EMWA.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/emwa-payment/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/emwa-payment.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="EMWA Donation & Payment Gateway preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EMWA Donation &amp; Payment Gateway Integration">
+  <meta name="twitter:description" content="Case study on secure Chapa payment processing, server functions, and receipt verification for EMWA.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/emwa-payment.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "EMWA Payment Integration",
+          "item": "https://tegegn.com.et/projects/emwa-payment/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "EMWA Donation & Payment Gateway Integration Case Study",
+      "description": "Technical case study detailing server-side payment orchestration with Chapa, server functions, and verification for the Ethiopian Media Women Association.",
+      "url": "https://tegegn.com.et/projects/emwa-payment/",
+      "image": "https://tegegn.com.et/assets/images/projects/emwa-payment.webp",
+      "datePublished": "2026-09-01",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Payment Gateway Integration",
+        "Chapa API",
+        "Fintech",
+        "TanStack Start",
+        "TypeScript",
+        "Non-Profit Systems"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-emwa-payment",
+      "name": "EMWA Donation & Payment System",
+      "description": "Secure donation and checkout integration for Ethiopian Media Women Association supporting Chapa payment gateway and direct bank transfers.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "sameAs": "https://ethmwa.org/"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">EMWA Payment Integration</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">FINTECH &bull; PAYMENT GATEWAY &bull; NGO PORTAL</p>
+      <h1 class="cs-title">EMWA Donation &amp; Payment Gateway Integration</h1>
+      <p class="cs-lead">An end-to-end, secure payment checkout and donation architecture engineered for the Ethiopian Media Women Association (EMWA), integrating the Chapa gateway with cryptographic server verification and dynamic receipt generation.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://ethmwa.org/" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bx-link-external'></i> Visit Live Platform (ethmwa.org)
+        </a>
+        <a href="../../#contact" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-envelope'></i> Discuss Payment Integration
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Specific Role</strong>
+        <span>Payment Gateway Integration Engineer</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Client / Organization</strong>
+        <span>Ethiopian Media Women Association (EMWA)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Payment Stack</strong>
+        <span>Chapa API, TanStack Start (Server Functions), jsPDF</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Frontend Environment</strong>
+        <span>React 19, TypeScript, Tailwind CSS v4, Radix UI</span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/emwa-payment.webp" type="image/webp">
+        <img src="../../assets/images/projects/emwa-payment.jpg" width="1200" height="1200" alt="EMWA payment integration preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Ethiopian Media Women Association donation and secure payment checkout system.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Context: Empowering Ethiopian Women in Media</h2>
+      <p>The <strong>Ethiopian Media Women Association (EMWA)</strong> is a prominent non-profit organization dedicated to empowering women journalists, advancing freedom of the press, and championing gender equity throughout Ethiopia's media landscape.</p>
+      <p>To support its initiatives, training programs, and legal advocacy, EMWA needed a modernized, trust-inspiring donation checkout on its web portal. My mandate on this project was specifically focused as the <strong>Payment Integration Engineer</strong>: designing and executing the entire payment architecture, checkout flow, gateway security, and automated donor receipt generation.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Server-Side Security</h2>
+      <p>Financial transactions in Ethiopia require rigorous confidentiality and compliance. Handling API keys directly in client-side JavaScript risks exposing private credentials.</p>
+      <p>To ensure total security, the payment pipeline was built using <strong>TanStack Start Server Functions (<code>createServerFn</code>)</strong>. This guarantees that all communication with the Chapa Payment Gateway and the private <code>CHAPA_SECRET_KEY</code> remain <strong>100% server-side</strong> and inaccessible to client browsers.</p>
+
+      <div class="cs-callout">
+        <h4>Payment Lifecycle Sequence:</h4>
+        <ol>
+          <li><strong>Client Donor Form (<code>/donate</code>):</strong> Donor selects preset amounts (50 ETB &ndash; 10,000 ETB) or custom amounts, providing verified contact metadata.</li>
+          <li><strong>Server-Side Initialization:</strong> <code>initializeDonation()</code> server function validates inputs, generates a tamper-proof cryptographic reference <code>EMWA-DONATION-[timestamp]-[random]</code>, and calls Chapa's <code>POST /v1/transaction/initialize</code>.</li>
+          <li><strong>Gateway Redirection:</strong> The client receives the signed <code>checkout_url</code> and completes payment via telebirr, CBE Birr, or local/international cards.</li>
+          <li><strong>Cryptographic Verification:</strong> Upon return to <code>/donate/success?tx_ref=...</code>, the server function invokes Chapa's <code>GET /v1/transaction/verify/{txRef}</code>.</li>
+          <li><strong>Automated PDF Receipt:</strong> Only after the gateway strictly verifies <code>status === success</code> does the client unlock the verified Thank-You modal and generate a downloadable, timestamped PDF receipt via <code>jsPDF</code>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Preventing Client-Side Transaction Tampering</h3>
+      <p>A common vulnerability in web checkouts is client-side payload modification (e.g., changing the amount or recipient ID right before sending).</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented dual validation with Zod schemas on both client and server. The server function strictly enforces minimum donation thresholds (50 ETB), validates contact fields, and constructs the authorization headers in a clean isolated execution environment before dispatching to Chapa.</p>
+      </div>
+
+      <h3>Challenge B: Direct Bank Transfer Alternative Workflow</h3>
+      <p>Many institutional Ethiopian donors prefer direct wire transfers or mobile banking without going through card gateways.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Engineered interactive bank transfer reference cards featuring Commercial Bank of Ethiopia (CBE), Awash Bank, and Telebirr. Donors can copy verified account numbers with one-click feedback and view instructions for submitting transaction reference codes to the EMWA finance team.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Key Deliverables &amp; Results</h2>
+      <ul>
+        <li><strong>Frictionless Donor Experience:</strong> Supports both instant online checkout (telebirr, cards, CBE Birr) and offline wire transfer options.</li>
+        <li><strong>Zero Secret Exposure:</strong> Private payment credentials remain safely isolated on the server tier.</li>
+        <li><strong>Instant Accountability:</strong> Automated client-side PDF receipt generation with verifiable transaction references guarantees donor confidence.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation Footer -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../taai/" class="cs-btn cs-btn-secondary">
+        <i class='bx bx-arrow-back'></i> Previous: taAI
+      </a>
+      <a href="../forex-monitor/" class="cs-btn cs-btn-primary">
+        Next: Forex Monitor <i class='bx bx-arrow-right'></i>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tegegn Wukianos. Built with passion in Wolaita Sodo, Ethiopia.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>taAI: Wolaytta AI &amp; Multilingual Translator | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study on building taAI: an AI assistant and multilingual translator for the Wolaytta language using Google Gemini, Flask Blueprints, and Supabase.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="ET">
+  <meta name="geo.placename" content="Wolaita Sodo, Ethiopia">
+  <link rel="canonical" href="https://tegegn.com.et/projects/taai/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="taAI: Wolaytta AI &amp; Multilingual Translation Platform | Case Study">
+  <meta property="og:description" content="Technical breakdown of building an AI chatbot and low-resource language translator for Wolaytta with Gemini AI, Flask, and Vite.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/taai/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/taai.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="taAI Wolaytta AI assistant preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="taAI: Wolaytta AI &amp; Multilingual Translator">
+  <meta name="twitter:description" content="Case study on building an AI language technology engine for Wolaytta with Python, Gemini AI, and Supabase.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/taai.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "taAI Platform",
+          "item": "https://tegegn.com.et/projects/taai/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "taAI: Wolaytta AI & Multilingual Translation Engine Case Study",
+      "description": "Technical case study detailing architecture, LLM prompt engineering, dictionary indexing, and multilingual translation for the Wolaytta language.",
+      "url": "https://tegegn.com.et/projects/taai/",
+      "image": "https://tegegn.com.et/assets/images/projects/taai.webp",
+      "datePublished": "2026-08-20",
+      "dateModified": "2026-09-08",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "Generative AI",
+        "Natural Language Processing",
+        "Low-Resource Languages",
+        "Python Flask",
+        "Google Gemini API",
+        "Wolaytta Language"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-taai",
+      "name": "taAI - Wolaytta AI & Translator",
+      "description": "AI conversational assistant and multilingual dictionary platform dedicated to the Wolaytta language.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "url": "https://taai.tegegn.com.et/",
+      "codeRepository": "https://github.com/Tegegndev/taAI"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="../../" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="../../#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#projects">Projects</a></li>
+      <li aria-current="page">taAI Platform</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">GENERATIVE AI &bull; LOW-RESOURCE NLP &bull; FULL-STACK</p>
+      <h1 class="cs-title">taAI: Wolaytta AI &amp; Multilingual Translator</h1>
+      <p class="cs-lead">A specialized generative AI conversational system and bidirectional translation engine designed to bridge digital linguistic gaps for the Wolaytta language.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://taai.tegegn.com.et/" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bx-link-external'></i> Open Live App
+        </a>
+        <a href="https://github.com/Tegegndev/taAI" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-secondary">
+          <i class='bx bxl-github'></i> View Repository
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Role</strong>
+        <span>Lead AI &amp; Full-Stack Engineer</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Tech Stack</strong>
+        <span>Python (Flask), Google Gemini API, Supabase, Vite/React</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Languages Supported</strong>
+        <span>Wolaytta (Wolaitta), English, Amharic</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Live Production URL</strong>
+        <span><a href="https://taai.tegegn.com.et/" target="_blank" rel="noreferrer">taai.tegegn.com.et</a></span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/taai.webp" type="image/webp">
+        <img src="../../assets/images/projects/taai.jpg" width="1200" height="1200" alt="taAI Wolaytta AI platform banner" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: taAI application architecture combining LLM conversational intelligence with cultural dictionary lookup.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Problem: Low-Resource Language Isolation</h2>
+      <p>The Wolaytta language (Omotic branch of Afroasiatic) is spoken by millions of people across Southern Ethiopia. Despite its cultural richness, Wolaytta remains significantly underserved in modern artificial intelligence platforms, search engines, and automated translation tools.</p>
+      <p>Major commercial LLMs frequently hallucinate or produce non-idiomatic output when queried in Wolaytta due to scarce training data in standard web crawls. Without specialized prompt engineering, terminology grounding, and structured lexicographical datasets, native speakers and language learners cannot reliably leverage modern AI technologies.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. System Architecture &amp; Modular Pipeline</h2>
+      <p>taAI was engineered with a modular backend structured via Flask Blueprints to cleanly separate concerns across authentication, AI inference, translation, and dictionary indexing:</p>
+
+      <div class="cs-callout">
+        <h4>High-Level System Flow:</h4>
+        <p><strong>Client SPA (Vite)</strong> &rarr; <strong>Flask API Gateway</strong> &rarr; <strong>Rate Limiter &amp; Auth Guard</strong> &rarr; <strong>Gemini AI / Dictionary Services</strong> &rarr; <strong>Supabase Cache &amp; History</strong></p>
+      </div>
+
+      <p>Key architectural components include:</p>
+      <ul>
+        <li><strong>Modular Blueprints:</strong> Organized into distinct route modules: <code>chat_routes.py</code> for streaming conversations, <code>translate_routes.py</code> for bidirectional cross-language transformations, <code>dict_routes.py</code> for structured vocabulary searches, and <code>auth_routes.py</code> for session handling.</li>
+        <li><strong>AI Grounding &amp; Prompt Orchestration:</strong> Custom system instructions injected into Google Gemini instances to constrain responses to natural, grammatically correct Wolaytta idioms and prevent cross-language hallucination.</li>
+        <li><strong>Bidirectional Translation Pipeline:</strong> Direct semantic translation endpoints linking:
+          <ul>
+            <li>English &harr; Wolaytta</li>
+            <li>Amharic &harr; Wolaytta</li>
+          </ul>
+        </li>
+        <li><strong>Lexicographical Offline Dictionary:</strong> A fast lookup service that checks verified vocabulary pairs before falling back to generative inference, preserving accuracy for technical and traditional terms.</li>
+        <li><strong>Security &amp; Rate Control:</strong> Built-in IP rate limiting and session tracking using Supabase PostgreSQL to prevent abuse while ensuring high availability.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Context Retention &amp; Low-Resource Accuracy</h3>
+      <p>General LLM models often shift into Amharic or English when conversing in Wolaytta due to tokenizer biases towards high-resource scripts.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Designed a multi-stage prompt synthesis layer in <code>prompts.py</code>. The orchestrator injects strict linguistic constraints, phonetic markers, and localized cultural context into each message payload, ensuring the model maintains grammatical consistency throughout multi-turn dialogues.</p>
+      </div>
+
+      <h3>Challenge B: Low-Latency Hybrid Lookups</h3>
+      <p>Users querying common words needed instantaneous dictionary definitions without waiting for full generative LLM processing overhead.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented a dual-layer resolution engine: requests are first routed through an indexed dictionary service. If an exact or fuzzy match exists, the definition and examples return within 15ms. Generative AI is dynamically invoked only for complex sentences, idiom synthesis, or natural conversation.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Impact &amp; Community Value</h2>
+      <p>taAI represents a milestone in digital inclusion for Southern Ethiopia. By creating a dedicated portal accessible both via desktop and mobile browsers, the platform allows students, researchers, and native speakers to:</p>
+      <ul>
+        <li>Communicate with modern generative AI in their native language.</li>
+        <li>Translate academic, governmental, and personal texts across English, Amharic, and Wolaytta.</li>
+        <li>Preserve linguistic heritage and expand digital documentation for future generations.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation Footer -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="../../#projects" class="cs-btn cs-btn-secondary">
+        <i class='bx bx-arrow-back'></i> Back to Portfolio
+      </a>
+      <a href="../emwa-payment/" class="cs-btn cs-btn-primary">
+        Next: EMWA Payment Gateway <i class='bx bx-arrow-right'></i>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tegegn Wukianos. Built with passion in Wolaita Sodo, Ethiopia.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
