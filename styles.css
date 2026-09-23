@@ -1982,6 +1982,18 @@ body.is-loading {
   border-color: rgba(201, 152, 119, 0.28);
 }
 
+.testi-badge.peer {
+  background: rgba(46, 111, 120, 0.12);
+  color: var(--secondary-color);
+  border-color: rgba(46, 111, 120, 0.28);
+}
+
+[data-theme="dark"] .testi-badge.peer {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--secondary-color);
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
 .testi-quote {
   font-size: 14px;
   line-height: 1.65;
