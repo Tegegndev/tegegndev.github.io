@@ -1888,7 +1888,8 @@ body.is-loading {
 .testimonials-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 45s linear infinite;
+  -webkit-animation: marqueeScroll 25s linear infinite !important;
+  animation: marqueeScroll 25s linear infinite !important;
   will-change: transform;
 }
 
@@ -1899,16 +1900,30 @@ body.is-loading {
   flex-shrink: 0;
 }
 
-@keyframes marqueeScroll {
-  from {
-    transform: translateX(0);
+@-webkit-keyframes marqueeScroll {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-.testimonials-marquee-wrapper:hover .testimonials-track {
+@keyframes marqueeScroll {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.testimonials-track:hover {
+  -webkit-animation-play-state: paused;
   animation-play-state: paused;
 }
 
@@ -2069,17 +2084,6 @@ body.is-loading {
     min-width: 290px;
     max-width: 290px;
     padding: 18px 20px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .testimonials-track {
-    animation: none;
-  }
-  .testimonials-marquee-wrapper {
-    overflow-x: auto;
-    mask-image: none;
-    -webkit-mask-image: none;
   }
 }
 
