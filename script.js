@@ -778,6 +778,25 @@ const initSkillsUnlock = () => {
   });
 };
 
+const initTestimonialsMarquee = () => {
+  const wrapper = document.querySelector(".testimonials-marquee-wrapper");
+  const track = document.querySelector(".testimonials-track");
+  if (!wrapper || !track) return;
+
+  const pauseTrack = () => {
+    track.style.animationPlayState = "paused";
+  };
+
+  const resumeTrack = () => {
+    track.style.animationPlayState = "running";
+  };
+
+  wrapper.addEventListener("mouseenter", pauseTrack);
+  wrapper.addEventListener("mouseleave", resumeTrack);
+  wrapper.addEventListener("touchstart", pauseTrack, { passive: true });
+  wrapper.addEventListener("touchend", resumeTrack, { passive: true });
+};
+
 const initApp = () => {
   initThemeToggle();
   dismissPreloader();
@@ -795,6 +814,7 @@ const initApp = () => {
   initCopyButtons();
   initScrollEnhancements();
   initMobileNav();
+  initTestimonialsMarquee();
 };
 
 if (document.readyState === "loading") {

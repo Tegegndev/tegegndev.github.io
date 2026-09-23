@@ -1888,8 +1888,8 @@ body.is-loading {
 .testimonials-track {
   display: flex;
   width: max-content;
-  -webkit-animation: marqueeScroll 25s linear infinite !important;
-  animation: marqueeScroll 25s linear infinite !important;
+  -webkit-animation: marqueeScroll 25s linear infinite;
+  animation: marqueeScroll 25s linear infinite;
   will-change: transform;
 }
 
@@ -1922,9 +1922,11 @@ body.is-loading {
   }
 }
 
-.testimonials-track:hover {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
+.testimonials-marquee-wrapper:hover .testimonials-track,
+.testimonials-track:hover,
+.testimonials-track:focus-within {
+  -webkit-animation-play-state: paused !important;
+  animation-play-state: paused !important;
 }
 
 .testimonial-card {
