@@ -21,6 +21,7 @@ In-depth technical architecture breakdowns, engineering decisions, and system de
 | :--- | :--- | :--- |
 | **taAI: Wolaytta AI & Multilingual Translator** | Python (Flask), Gemini AI, Supabase, Vite | [📖 Read taAI Technical Case Study](https://tegegn.com.et/projects/taai/) |
 | **EMWA Donation & Payment Gateway** | Chapa API, TanStack Start, Server Functions | [📖 Read EMWA Payment Case Study](https://tegegn.com.et/projects/emwa-payment/) |
+| **Marvin Tattoos & Piercing Atelier** | React, TypeScript, Tailwind CSS, Node.js | [📖 Read Marvin Tattoos Case Study](https://tegegn.com.et/projects/marvin-tattoos/) |
 | **Visit Wolaita Tourism & AI Try-On** | Python (Flask), Virtual Try-On API, CSS3 | [📖 Read Visit Wolaita Case Study](https://tegegn.com.et/projects/visit-wolaita/) |
 | **Ethiopia Forex Currency Monitor** | Python, Web Scraping, REST API | [📖 Read Forex Monitor Case Study](https://tegegn.com.et/projects/forex-monitor/) |
 | **Sirba: Ad-Free Android Music Player** | Android, Audio Streaming, Synced Lyrics | [📖 Read Sirba App Case Study](https://tegegn.com.et/projects/sirba/) |
@@ -57,6 +58,7 @@ In-depth technical architecture breakdowns, engineering decisions, and system de
 └── projects/                    # Deep-dive engineering case studies
     ├── taai/index.html
     ├── emwa-payment/index.html
+    ├── marvin-tattoos/index.html
     ├── visit-wolaita/index.html
     ├── forex-monitor/index.html
     ├── sirba/index.html

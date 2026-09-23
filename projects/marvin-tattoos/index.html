@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-ET">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvin Tattoos &amp; Piercing Atelier | Technical Case Study | Tegegn Wukianos</title>
+  <meta name="description" content="Technical case study on engineering a luxury dark editorial web application and appointment booking platform for Marvin Tattoos &amp; Piercing Atelier in Kampala, Uganda using React, TypeScript, and Tailwind CSS.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Tegegn Wukianos">
+  <meta name="theme-color" content="#161311">
+  <meta name="geo.region" content="UG">
+  <meta name="geo.placename" content="Kampala, Uganda">
+  <link rel="canonical" href="https://tegegn.com.et/projects/marvin-tattoos/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/brand/tw-developer-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/brand/favicon-32x32.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Marvin Tattoos &amp; Piercing Atelier | Technical Case Study">
+  <meta property="og:description" content="Case study on building a luxury bespoke web application and automated booking workflow for a premier body art atelier in Kampala, Uganda.">
+  <meta property="og:url" content="https://tegegn.com.et/projects/marvin-tattoos/">
+  <meta property="og:site_name" content="Tegegn Wukianos">
+  <meta property="og:locale" content="en-ET">
+  <meta property="og:image" content="https://tegegn.com.et/assets/images/projects/marvin-tattoos.webp">
+  <meta property="og:image:width" content="1440">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="Marvin Tattoos & Piercing Atelier web application preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marvin Tattoos Atelier | Technical Case Study">
+  <meta name="twitter:description" content="Engineering a luxury web platform and automated WhatsApp consultation routing for Marvin Tattoos in Kampala, Uganda.">
+  <meta name="twitter:image" content="https://tegegn.com.et/assets/images/projects/marvin-tattoos.webp">
+  <meta name="twitter:creator" content="@winner_jlingz">
+
+  <!-- Styles -->
+  <link href="../../assets/icons/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/fonts/google/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+
+  <script>
+    (function() {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tegegn.com.et/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://tegegn.com.et/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Marvin Tattoos Atelier",
+          "item": "https://tegegn.com.et/projects/marvin-tattoos/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Marvin Tattoos & Piercing Atelier Web Platform Case Study",
+      "description": "Technical case study detailing full-stack frontend engineering, dark luxury branding, and automated consultation routing for a high-end tattoo studio in Kampala, Uganda.",
+      "url": "https://tegegn.com.et/projects/marvin-tattoos/",
+      "image": "https://tegegn.com.et/assets/images/projects/marvin-tattoos.webp",
+      "datePublished": "2026-09-22",
+      "dateModified": "2026-09-23",
+      "inLanguage": "en-ET",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos",
+        "url": "https://tegegn.com.et/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "about": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Client Project",
+        "Booking Engine",
+        "Luxury Branding",
+        "WhatsApp Automation"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://tegegn.com.et/#project-marvin-tattoos",
+      "name": "Marvin Tattoos Atelier Platform",
+      "description": "Custom web application and digital appointment scheduling engine for Marvin Tattoos & Piercing Atelier.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "@id": "https://tegegn.com.et/#person",
+        "name": "Tegegn Wukianos"
+      },
+      "sameAs": "https://marvintattoos256.com/"
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="/" class="cs-brand">
+        <img src="../../assets/images/brand/tw-developer-mark.svg" alt="Tegegn Wukianos Logo">
+        <span>Tegegn Wukianos</span>
+      </a>
+      <div class="cs-nav-actions">
+        <a href="/#projects" class="cs-back-link">
+          <i class='bx bx-arrow-back'></i> All Projects
+        </a>
+        <button class="cs-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-moon'></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="cs-breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li aria-current="page">Marvin Tattoos Atelier</li>
+    </ol>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cs-container">
+
+    <!-- Hero Header -->
+    <header class="cs-hero">
+      <p class="cs-kicker">CLIENT WORK &bull; BODY ARTISTRY &bull; FULL-STACK WEB</p>
+      <h1 class="cs-title">Marvin Tattoos &amp; Piercing Atelier</h1>
+      <p class="cs-lead">A bespoke brand web application, high-resolution body art showcase, and automated consultation scheduling platform engineered for Kampala's premier tattoo and piercing atelier.</p>
+      
+      <div class="cs-cta-group">
+        <a href="https://marvintattoos256.com/" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-primary">
+          <i class='bx bx-link-external'></i> Visit Live Studio (marvintattoos256.com)
+        </a>
+        <a href="https://github.com/Tegegndev/marvin_tattoo" target="_blank" rel="noreferrer noopener" class="cs-btn cs-btn-secondary">
+          <i class='bx bx-code-alt'></i> View Source Code
+        </a>
+      </div>
+    </header>
+
+    <!-- Specs Grid -->
+    <div class="cs-specs-grid" aria-label="Project details">
+      <div class="cs-spec-item">
+        <strong>Specific Role</strong>
+        <span>Full-Stack Web Developer &amp; UI Designer</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Client / Business</strong>
+        <span>Marvin Tattoos &amp; Piercing (Kampala, Uganda)</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Frontend Stack</strong>
+        <span>React 18, TypeScript, Tailwind CSS, Vite, Lucide</span>
+      </div>
+      <div class="cs-spec-item">
+        <strong>Backend &amp; Routing</strong>
+        <span>Node.js, Express, Prisma ORM, WhatsApp API Routing</span>
+      </div>
+    </div>
+
+    <!-- Featured Visual -->
+    <figure class="cs-featured-media">
+      <picture>
+        <source srcset="../../assets/images/projects/marvin-tattoos.webp" type="image/webp">
+        <img src="../../assets/images/projects/marvin-tattoos.jpg" width="1440" height="900" alt="Marvin Tattoos Atelier web application preview" loading="eager">
+      </picture>
+      <figcaption class="cs-media-caption">Figure 1: Marvin Tattoos &amp; Piercing Atelier luxury brand experience and direct consultation workflow.</figcaption>
+    </figure>
+
+    <!-- Content Sections -->
+    <section class="cs-section">
+      <h2>1. The Context: Master Craftsmanship in Kampala</h2>
+      <p><strong>Marvin Tattoos &amp; Piercing Atelier</strong>, located at New Pioneer Mall in Kampala, Uganda, is headed by Master Marvin—an artist with over 14 years of specialized craft across dark realism, bespoke blackwork, semi-permanent makeup (PMU), and hospital-grade body piercings.</p>
+      <p>Despite exceptional physical artistry and a 4.9-star reputation, the studio previously conducted customer intake through chaotic manual WhatsApp chats and Instagram direct messages. The client needed a centralized, prestigious digital portal reflecting the atelier's dark gothic luxury aesthetic while establishing a structured appointment intake pipeline.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>2. Architecture &amp; Engineering Decisions</h2>
+      <p>The solution was architected as a lightweight, fast-loading Single Page Application (SPA) built on <strong>React 18</strong> and bundled with <strong>Vite</strong>, styled using a custom tailored design system in <strong>Tailwind CSS</strong>, with a companion <strong>Express/Node.js backend</strong>.</p>
+
+      <div class="cs-callout">
+        <h4>Key Architectural Pillars:</h4>
+        <ol>
+          <li><strong>Dark Luxury Aesthetic System:</strong> Crafted an editorial typography hierarchy utilizing <em>Limelight</em>, <em>Bodoni Moda</em>, and <em>Geist</em> on a titanium slate and crimson palette, reinforcing a premium gothic luxury atmosphere.</li>
+          <li><strong>High-Resolution Curated Galleries:</strong> Image-heavy portfolio components with responsive WebP picture sources and progressive loading, categorized across dark realism, fine-line lettering, tribal blackwork, and precision titanium piercings.</li>
+          <li><strong>Structured Consultation Funnel:</strong> Guided booking workflow that captures client preferences, body placements, reference ideas, and preferred dates, converting them into structured, pre-formatted WhatsApp consultations for instantaneous studio response.</li>
+          <li><strong>Hygiene &amp; Safety Compliance Badging:</strong> Dedicated trust modules documenting the studio's Class-B autoclave sterilization protocols, ASTM F-136 titanium jewelry standards, and aftercare guidance.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>3. Technical Challenges &amp; Solutions</h2>
+      
+      <h3>Challenge A: Maintaining Lightning-Fast Performance on Media-Heavy Portfolios</h3>
+      <p>High-resolution tattoo imagery often degrades mobile page load performance, particularly on regional cellular networks across East Africa.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Implemented modern image compression pipelines utilizing next-gen WebP assets with explicit aspect ratios, asynchronous decoding, and lazy loading. This reduced the initial payload to under 1.2 MB while retaining razor-sharp tattoo ink detail on retina screens.</p>
+      </div>
+
+      <h3>Challenge B: Frictionless Booking Without Barrier to Entry</h3>
+      <p>Requiring account creation or complex multi-step forms causes steep drop-offs in appointment booking rates.</p>
+      <div class="cs-callout">
+        <h4>Solution:</h4>
+        <p>Engineered an interactive service pricing and consultation modal that generates one-click encrypted WhatsApp links with pre-populated inquiry metadata, allowing prospective clients to confirm dates and share reference images with zero onboarding friction.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>4. Key Deliverables &amp; Business Results</h2>
+      <ul>
+        <li><strong>Live Production Deployment:</strong> Operating smoothly at <a href="https://marvintattoos256.com/" target="_blank" rel="noreferrer noopener" style="color: var(--primary-color); font-weight: 600;">marvintattoos256.com</a>.</li>
+        <li><strong>Automated Consultation Inflow:</strong> Eliminated ambiguous repetitive inquiries by capturing service type, size, and body location upfront.</li>
+        <li><strong>Elevated Brand Perception:</strong> A digital storefront that mirrors the craftsmanship, sterile precision, and artistry of the studio.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation Footer -->
+    <nav class="cs-footer-nav" aria-label="Project navigation">
+      <a href="/projects/emwa-payment/" class="cs-btn cs-btn-secondary">
+        <i class='bx bx-arrow-back'></i> Previous: EMWA Payment
+      </a>
+      <a href="/projects/visit-wolaita/" class="cs-btn cs-btn-primary">
+        Next: Visit Wolaita <i class='bx bx-arrow-right'></i>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tegegn Wukianos. Built with passion in Wolaita Sodo, Ethiopia.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
